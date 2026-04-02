@@ -41,11 +41,22 @@ scraper/        <- Python scrapers
 - Must be added as GitHub repo secret `TMDB_API_KEY` for CI runs
 - For local runs: `TMDB_API_KEY=4eb892d1a5ffee6bf9159c3cf71b398a python3 scraper/main.py`
 
+## MDbList API Key (for Letterboxd + RT scores)
+- Key: `68b290gb1hyblzjt7yr4144jc`
+- Docs: https://docs.mdblist.com/docs/api
+- Free tier: 1000 requests/day
+- Returns: Letterboxd, RT Tomatometer, IMDb, Metacritic scores in one call
+- Query by IMDB ID (from TMDB external_ids) or TMDB ID
+- Must be added as GitHub repo secret `MDBLIST_API_KEY` for CI runs
+- NOT YET INTEGRATED. Next step: create scraper/mdblist.py enrichment module, call after TMDB enrichment.
+
 ## Current State (as of April 2, 2026)
 
 ### What's working:
 - All 7 scrapers run and produce data
-- TMDB enrichment works (761/794 showings got posters on last run)
+- Cinemark now pulls 14 days of showtimes (was same-day only)
+- TMDB enrichment with poster images, year, genres, ratings (1340/1418 showings have posters)
+- Poster thumbnail cards with TMDB rating badge
 - Categories: New Release, Independent, Classic, Back in Theaters, Festival
 - Multi-category support (a film can be both Independent + Classic)
 - Date-by-date pagination with scrollable date strip
