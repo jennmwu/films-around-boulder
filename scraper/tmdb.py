@@ -187,6 +187,12 @@ def enrich_movies(movies):
         if override.get("director") and not m.get("director"):
             m["director"] = override["director"]
 
+        # Rating (TMDB vote_average, 0-10 scale)
+        if tmdb.get("vote_average") and tmdb["vote_average"] > 0:
+            m["rating"] = round(tmdb["vote_average"], 1)
+        else:
+            m["rating"] = None
+
     print(f"[TMDB] Enriched {enriched}/{len(movies)} showings with posters")
 
     save_cache(cache)

@@ -326,16 +326,51 @@ main {
 
 .movie-card:hover { border-left-color: var(--accent); }
 
+.card-with-poster {
+  display: flex;
+  gap: 14px;
+}
+
+.card-poster {
+  width: 72px;
+  height: 108px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+
+.card-body {
+  flex: 1;
+  min-width: 0;
+}
+
 .movie-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 20px; font-weight: 900;
+  font-size: 18px; font-weight: 900;
   color: var(--warm-white);
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .movie-meta {
   font-size: 12px; color: var(--text-dim);
-  margin-top: 1px; font-weight: 500; font-style: italic;
+  margin-top: 2px; font-weight: 500; font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rating-badge {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 1px 6px;
+  border: 1px solid var(--accent);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .showtime-row {
@@ -468,4 +503,6 @@ footer {
   .date-chip { min-width: 52px; padding: 4px 8px 3px; }
   .date-chip-num { font-size: 11px; }
   .movie-section .movie-title { font-size: 20px; }
+  .card-poster { width: 56px; height: 84px; }
+  .movie-title { font-size: 16px; }
 }

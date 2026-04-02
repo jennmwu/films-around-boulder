@@ -1,17 +1,17 @@
 """
 Cinemark Century Boulder scraper.
-Parses the server-rendered HTML for today's showtimes.
-Showtime links contain ISO datetimes in the URL, making time extraction reliable.
+Uses the Umbraco surface controller API to fetch showtimes for each date.
+Supports future dates (up to 14 days out).
 Theater ID: 492
 """
 
 import re
+import time
 import requests
 from bs4 import BeautifulSoup
-from datetime import datetime
-from urllib.parse import urlparse, parse_qs
+from datetime import date, timedelta, datetime
 
-THEATER_URL = "https://www.cinemark.com/theatres/co-boulder/century-boulder"
+SHOWTIME_API = "https://www.cinemark.com/umbraco/surface/Showtimes/GetByTheaterId"
 THEATER_ID = "492"
 THEATER_NAME = "Cinemark Boulder"
 
@@ -21,27 +21,38 @@ HEADERS = {
 
 
 def scrape():
-    """Return a list of showtime dicts for Cinemark Century Boulder."""
-    print(f"[Cinemark] Fetching {THEATER_URL}")
-    resp = requests.get(THEATER_URL, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
+    """Return a list of showtime dicts for Cinemark Century Boulder, 14 days out."""
+    all_results = []
+    today = date.today()
 
-    soup = BeautifulSoup(resp.text, "lxml")
-    results = _parse_showtimes(soup)
-    print(f"[Cinemark] Scraped {len(results)} showings")
-    return results
+    for offset in range(14):
+        show_date = today + timedelta(days=offset)
+        date_str = show_date.isoformat()
+
+        print(f"[Cinemark] Fetching {date_str}")
+        try:
+            url = f"{SHOWTIME_API}?theaterId={THEATER_ID}&showDate={date_str}"
+            resp = requests.get(url, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+
+            soup = BeautifulSoup(resp.text, "lxml")
+            results = _parse_showtimes(soup)
+            all_results.extend(results)
+        except Exception as e:
+            print(f"[Cinemark] Error fetching {date_str}: {e}")
+
+        if offset > 0:
+            time.sleep(0.5)
+
+    print(f"[Cinemark] Scraped {len(all_results)} showings across 14 days")
+    return all_results
 
 
 def _parse_showtimes(soup):
-    """Extract movie showtimes from the page HTML."""
+    """Extract movie showtimes from the HTML fragment."""
     results = []
 
-    # Find all ticket links - they contain the showtime data
     ticket_links = soup.find_all("a", href=re.compile(r"TicketSeatMap"))
-
-    # Group by movie: walk up from each ticket link to find the parent movie block
-    # and extract the movie title
-    movies_seen = {}  # movie_slug -> title
 
     for link in ticket_links:
         href = link.get("href", "")
@@ -53,7 +64,6 @@ def _parse_showtimes(soup):
         if not showtime_iso:
             continue
 
-        # Parse the ISO datetime from the ticket URL
         try:
             dt = datetime.fromisoformat(showtime_iso)
             date_str = dt.strftime("%Y-%m-%d")
@@ -61,20 +71,16 @@ def _parse_showtimes(soup):
         except (ValueError, TypeError):
             continue
 
-        # Find the movie title by walking up to find the nearest h3
         title = _find_movie_title(link)
         if not title:
             continue
 
-        # Build the full ticket URL
         ticket_url = f"https://www.cinemark.com{href}" if href.startswith("/") else href
-
-        # Check the link text and nearby elements for format info
         fmt = _detect_format(link)
 
         results.append({
             "title": title,
-            "director": None,  # Cinemark pages don't show director
+            "director": None,
             "year": None,
             "theater": THEATER_NAME,
             "date": date_str,
@@ -90,7 +96,6 @@ def _parse_showtimes(soup):
 def _parse_ticket_url(href):
     """Extract parameters from a Cinemark ticket URL."""
     try:
-        # URL format: /TicketSeatMap/?TheaterId=492&ShowtimeId=...&Showtime=2026-03-14T16:40:00
         if "?" not in href:
             return None
         query = href.split("?", 1)[1]
@@ -105,16 +110,19 @@ def _parse_ticket_url(href):
 
 
 def _find_movie_title(element):
-    """Walk up the DOM from a showtime link to find the movie title (h3 tag)."""
-    # Walk up through parents looking for an h3 sibling or ancestor's h3
+    """Walk up the DOM from a showtime link to find the movie title."""
     current = element
-    for _ in range(10):  # limit depth
+    for _ in range(10):
         current = current.parent
         if current is None:
             break
+        # Check for title in img alt text (API returns poster images with "Title Poster" alt)
+        img = current.find("img", alt=True)
+        if img and img["alt"].endswith(" Poster"):
+            return img["alt"][:-7].strip()
+        # Fallback: h3 tag
         h3 = current.find("h3")
         if h3:
-            # Get the text, cleaning up any nested elements
             title_link = h3.find("a")
             if title_link:
                 return title_link.get_text(strip=True)
@@ -123,8 +131,20 @@ def _find_movie_title(element):
 
 
 def _detect_format(link):
-    """Check for special format indicators near the showtime link."""
-    # Check the link text and surrounding text
+    """Check for special format indicators on the showtime link."""
+    # Prefer explicit data attribute from the API
+    fmt = link.get("data-print-type-name", "")
+    if fmt:
+        if "3D" in fmt or "RealD" in fmt:
+            return "3D"
+        if "IMAX" in fmt:
+            return "IMAX"
+        if "Dolby" in fmt:
+            return "Dolby"
+        if "XD" in fmt:
+            return "XD"
+
+    # Fallback: check surrounding text
     text = link.get_text(strip=True).lower()
     parent_text = link.parent.get_text(" ", strip=True).lower() if link.parent else ""
 

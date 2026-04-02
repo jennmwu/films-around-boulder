@@ -326,7 +326,63 @@ function getMovieMeta(showings) {
   const parts = [];
   if (s.director) parts.push(s.director);
   if (s.year) parts.push(s.year);
-  return parts.join(', ');
+  if (s.genres) parts.push(s.genres);
+  return parts.join(' / ');
+}
+
+function getPoster(showings) {
+  const s = showings[0];
+  return s.poster_url || null;
+}
+
+function getRating(showings) {
+  const s = showings[0];
+  return s.rating || null;
+}
+
+function renderMovieCard(title, showings, renderShowtimes) {
+  const meta = getMovieMeta(showings);
+  const poster = getPoster(showings);
+  const rating = getRating(showings);
+
+  let html = '<div class="movie-card">';
+  if (poster) {
+    html += '<div class="card-with-poster">';
+    html += `<img class="card-poster" src="${esc(poster)}" alt="" loading="lazy">`;
+    html += '<div class="card-body">';
+  }
+
+  html += `<div class="movie-title">${esc(title)}</div>`;
+  if (meta || rating) {
+    html += '<div class="movie-meta">';
+    if (meta) html += esc(meta);
+    if (rating) html += `<span class="rating-badge">${rating}</span>`;
+    html += '</div>';
+  }
+
+  html += renderShowtimes();
+
+  if (poster) html += '</div></div>';
+  html += '</div>';
+  return html;
+}
+
+function renderShowtimeRows(showings, groupKey) {
+  const grouped = groupBy(showings, groupKey);
+  let html = '';
+  Object.keys(grouped).sort().forEach(key => {
+    const times = grouped[key];
+    html += '<div class="showtime-row">';
+    html += `<span class="${groupKey === 'theater' ? 'theater-name' : 'schedule-date'}">${groupKey === 'theater' ? esc(key) : formatShortDate(key)}</span>`;
+    html += '<span class="times">';
+    times.forEach(t => {
+      html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
+      if (t.format && t.format !== 'Standard') html += `<span class="tag tag-format">${esc(t.format)}</span>`;
+      if (t.special) html += `<span class="tag tag-special">${esc(t.special)}</span>`;
+    });
+    html += '</span></div>';
+  });
+  return html;
 }
 
 function renderByDate(container, movies) {
@@ -336,26 +392,7 @@ function renderByDate(container, movies) {
 
   Object.keys(byTitle).sort().forEach(title => {
     const showings = byTitle[title];
-    const byTheater = groupBy(showings, 'theater');
-    const meta = getMovieMeta(showings);
-
-    html += '<div class="movie-card">';
-    html += `<div class="movie-title">${esc(title)}</div>`;
-    if (meta) html += `<div class="movie-meta">${esc(meta)}</div>`;
-
-    Object.keys(byTheater).sort().forEach(theater => {
-      const times = byTheater[theater];
-      html += '<div class="showtime-row">';
-      html += `<span class="theater-name">${esc(theater)}</span>`;
-      html += '<span class="times">';
-      times.forEach(t => {
-        html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
-        if (t.format && t.format !== 'Standard') html += `<span class="tag tag-format">${esc(t.format)}</span>`;
-        if (t.special) html += `<span class="tag tag-special">${esc(t.special)}</span>`;
-      });
-      html += '</span></div>';
-    });
-    html += '</div>';
+    html += renderMovieCard(title, showings, () => renderShowtimeRows(showings, 'theater'));
   });
 
   html += '</div>';
@@ -375,26 +412,7 @@ function renderByLocation(container, movies) {
 
     Object.keys(byTitle).sort().forEach(title => {
       const showings = byTitle[title];
-      const byDate = groupBy(showings, 'date');
-      const meta = getMovieMeta(showings);
-
-      html += '<div class="movie-card">';
-      html += `<div class="movie-title">${esc(title)}</div>`;
-      if (meta) html += `<div class="movie-meta">${esc(meta)}</div>`;
-
-      Object.keys(byDate).sort().forEach(date => {
-        const times = byDate[date];
-        html += '<div class="showtime-row">';
-        html += `<span class="schedule-date">${formatShortDate(date)}</span>`;
-        html += '<span class="times">';
-        times.forEach(t => {
-          html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
-          if (t.format && t.format !== 'Standard') html += `<span class="tag tag-format">${esc(t.format)}</span>`;
-          if (t.special) html += `<span class="tag tag-special">${esc(t.special)}</span>`;
-        });
-        html += '</span></div>';
-      });
-      html += '</div>';
+      html += renderMovieCard(title, showings, () => renderShowtimeRows(showings, 'date'));
     });
     html += '</div>';
   });
