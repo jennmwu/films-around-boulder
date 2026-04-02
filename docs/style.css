@@ -293,6 +293,12 @@ header {
   font-family: 'Space Grotesk', sans-serif;
 }
 
+.banner-text a {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 700;
+}
+
 .banner-close:hover { color: var(--text); }
 
 /* ===================== CONTENT ===================== */
@@ -316,63 +322,116 @@ main {
   padding: 4px 14px; margin-bottom: 16px;
 }
 
-.movie-card {
-  background: var(--card-bg);
-  border-left: 3px solid #333;
-  padding: 14px 16px;
-  margin-bottom: 8px;
+/* ===================== POSTER GRID ===================== */
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.grid-item {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.15s;
+}
+
+.grid-item:hover { transform: scale(1.03); }
+.grid-item.expanded { transform: none; }
+
+.grid-poster-wrap {
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border: 2px solid transparent;
   transition: border-color 0.15s;
 }
 
-.movie-card:hover { border-left-color: var(--accent); }
-
-.card-with-poster {
-  display: flex;
-  gap: 14px;
+.grid-item:hover .grid-poster-wrap,
+.grid-item.expanded .grid-poster-wrap {
+  border-color: var(--accent);
 }
 
-.card-poster {
-  width: 72px;
-  height: 108px;
+.grid-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.grid-poster-placeholder {
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+.grid-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--warm-white);
+  text-transform: uppercase;
+  margin-top: 6px;
+  line-height: 1.2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.grid-meta {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Expanded detail panel (spans full grid width) */
+.grid-detail {
+  grid-column: 1 / -1;
+  background: var(--card-bg);
+  border-left: 3px solid var(--accent);
+  padding: 16px;
+  margin: 4px 0 8px;
+  cursor: default;
+}
+
+.grid-detail-inner {
+  display: flex;
+  gap: 16px;
+}
+
+.detail-poster {
+  width: 100px;
+  height: 150px;
   object-fit: cover;
   flex-shrink: 0;
   border: 1px solid var(--border);
 }
 
-.card-body {
-  flex: 1;
-  min-width: 0;
-}
+.detail-body { flex: 1; min-width: 0; }
 
-.movie-title {
+.detail-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 18px; font-weight: 900;
+  font-size: 20px;
+  font-weight: 900;
   color: var(--warm-white);
   text-transform: uppercase;
   line-height: 1.2;
 }
 
-.movie-meta {
-  font-size: 12px; color: var(--text-dim);
-  margin-top: 2px; font-weight: 500; font-style: italic;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+.detail-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 2px;
+  font-style: italic;
 }
 
-.rating-badge {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 11px;
-  background: var(--accent-dim);
-  color: var(--accent);
-  padding: 1px 6px;
-  border: 1px solid var(--accent);
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
+/* Showtime rows (reused in detail panel) */
 .showtime-row {
   display: flex; align-items: baseline;
   gap: 12px; margin-top: 8px; flex-wrap: wrap;
@@ -381,6 +440,11 @@ main {
 .theater-name {
   font-size: 12px; color: var(--text-dim);
   font-weight: 500; min-width: 140px;
+}
+
+.schedule-date {
+  font-size: 12px; color: var(--text-dim);
+  min-width: 110px; font-weight: 500;
 }
 
 .times {
@@ -419,37 +483,6 @@ a.time-chip:hover {
   color: var(--accent); border: 1px solid var(--accent);
 }
 
-/* Movie view */
-.movie-section {
-  margin-top: 32px;
-  background: var(--card-bg);
-  border-left: 3px solid #333;
-  padding: 18px 20px 20px;
-}
-
-.movie-section:hover { border-left-color: var(--accent); }
-.movie-section .movie-title { font-size: 26px; }
-.movie-section .movie-meta { margin-bottom: 12px; }
-
-.schedule-block { margin-bottom: 10px; }
-
-.schedule-theater {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px; font-weight: 700;
-  color: var(--cream); letter-spacing: 1px;
-  text-transform: uppercase; margin-bottom: 4px;
-}
-
-.schedule-date-row {
-  display: flex; align-items: baseline;
-  gap: 10px; margin-left: 16px; margin-top: 4px; flex-wrap: wrap;
-}
-
-.schedule-date {
-  font-size: 12px; color: var(--text-dim);
-  min-width: 110px; font-weight: 500;
-}
-
 .empty-state {
   text-align: center; color: var(--text-dim);
   padding: 100px 20px; font-size: 18px;
@@ -483,6 +516,20 @@ footer {
   line-height: 1.5;
 }
 
+.footer-credit {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.footer-credit a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-credit a:hover { text-decoration: underline; }
+
 .footer-meta {
   font-size: 10px; color: var(--text-dim);
   letter-spacing: 1px; text-transform: uppercase;
@@ -498,11 +545,13 @@ footer {
   .nav-bar { gap: 8px; }
   .toggle-btn { padding: 5px 12px; font-size: 11px; letter-spacing: 1px; }
   .filter-toggle { padding: 5px 10px; font-size: 11px; letter-spacing: 1px; }
-  .theater-name { min-width: auto; width: 100%; }
-  .showtime-row { flex-direction: column; gap: 4px; }
   .date-chip { min-width: 52px; padding: 4px 8px 3px; }
   .date-chip-num { font-size: 11px; }
-  .movie-section .movie-title { font-size: 20px; }
-  .card-poster { width: 56px; height: 84px; }
-  .movie-title { font-size: 16px; }
+  .poster-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .grid-title { font-size: 11px; }
+  .detail-poster { width: 72px; height: 108px; }
+  .detail-title { font-size: 16px; }
+  .theater-name { min-width: auto; width: 100%; }
+  .showtime-row { flex-direction: column; gap: 4px; }
+  .grid-detail-inner { gap: 12px; }
 }

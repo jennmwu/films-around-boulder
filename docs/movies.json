@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-04-02T22:39:33Z",
+  "last_updated": "2026-04-02T23:03:21Z",
   "movies": [
     {
       "title": "All That's Left of You",
@@ -61,25 +61,6 @@
       ]
     },
     {
-      "title": "Reminders of Him",
-      "director": null,
-      "year": 2026,
-      "theater": "Cinemark Boulder",
-      "date": "2026-04-02",
-      "time": "4:25 PM",
-      "url": "https://www.cinemark.com/TicketSeatMap/?TheaterId=492&ShowtimeId=525213&CinemarkMovieId=105048&Showtime=2026-04-02T16:25:00",
-      "format": "Standard",
-      "special": null,
-      "poster_url": "https://image.tmdb.org/t/p/w342/7L6rceYgzQ0NeHD7PRDNrRoQ291.jpg",
-      "synopsis": "When Diem's custodial grandparents adamantly refuse Kenna's attempts to see her daughter, Kenna discovers unexpected compassion, and then something truer and deeper, with former NFL player and local bar owner Ledger. As their secret romance develops, so do the dangers for both of them, leading Kenna toward heartbreak and, ultimately, the hope for a second chance.",
-      "genres": "Romance, Drama",
-      "tmdb_id": 1367642,
-      "rating": 7.1,
-      "categories": [
-        "New Release"
-      ]
-    },
-    {
       "title": "Ghost Elephants",
       "director": null,
       "year": 2026,
@@ -114,25 +95,6 @@
       "genres": "Romance, Comedy",
       "tmdb_id": 1325734,
       "rating": 6.2,
-      "categories": [
-        "New Release"
-      ]
-    },
-    {
-      "title": "The Super Mario Galaxy Movie",
-      "director": null,
-      "year": 2026,
-      "theater": "Cinemark Boulder",
-      "date": "2026-04-02",
-      "time": "4:30 PM",
-      "url": "https://www.cinemark.com/TicketSeatMap/?TheaterId=492&ShowtimeId=525212&CinemarkMovieId=107461&Showtime=2026-04-02T16:30:00",
-      "format": "Standard",
-      "special": null,
-      "poster_url": "https://image.tmdb.org/t/p/w342/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
-      "synopsis": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade.",
-      "genres": "Adventure, Animation, Comedy, Family, Fantasy",
-      "tmdb_id": 1226863,
-      "rating": 6.9,
       "categories": [
         "New Release"
       ]
@@ -634,8 +596,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-02",
       "time": "6:55 PM",
@@ -648,7 +610,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -2155,8 +2117,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-03",
       "time": "12:40 PM",
@@ -2169,7 +2131,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -3736,8 +3698,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-03",
       "time": "6:50 PM",
@@ -3750,7 +3712,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -5605,8 +5567,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-04",
       "time": "12:40 PM",
@@ -5619,7 +5581,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -7242,8 +7204,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-04",
       "time": "6:50 PM",
@@ -7256,7 +7218,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -9282,8 +9244,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-05",
       "time": "1:15 PM",
@@ -9296,7 +9258,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -10184,7 +10146,7 @@
       "theater": "Landmark Mayan",
       "date": "2026-04-05",
       "time": "4:30 PM",
-      "url": "https://booking.landmarktheatres.com/launch/ticketing/bca60d6e-fb8a-5948-abf5-d80c4213349f",
+      "url": "https://booking.landmarktheatres.com/launch/ticketing/0e057dfd-ef1c-53a9-a74d-da81ba5aa222",
       "format": "Standard",
       "special": null,
       "poster_url": "https://image.tmdb.org/t/p/w342/ikcNOWB6Qo1ER1H1BJL6Vf0W22s.jpg",
@@ -11149,8 +11111,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-05",
       "time": "9:10 PM",
@@ -11163,7 +11125,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -12156,8 +12118,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-06",
       "time": "2:55 PM",
@@ -12170,7 +12132,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -14534,8 +14496,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-07",
       "time": "1:40 PM",
@@ -14548,7 +14510,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -16154,8 +16116,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-07",
       "time": "7:30 PM",
@@ -16168,7 +16130,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {
@@ -17466,8 +17428,8 @@
     },
     {
       "title": "Wuthering Heights",
-      "director": null,
-      "year": 1992,
+      "director": "Emerald Fennell",
+      "year": 2026,
       "theater": "Cinemark Boulder",
       "date": "2026-04-08",
       "time": "2:55 PM",
@@ -17480,7 +17442,7 @@
       "tmdb_id": 25095,
       "rating": 6.6,
       "categories": [
-        "Classic"
+        "New Release"
       ]
     },
     {

@@ -116,11 +116,12 @@ def _apply_overrides(movies):
         ov = overrides.get(m["title"].lower(), {})
         if not ov:
             continue
-        if ov.get("year") and not m.get("year"):
+        # Overrides always win (they're manual corrections)
+        if ov.get("year"):
             m["year"] = ov["year"]
-        if ov.get("director") and not m.get("director"):
+        if ov.get("director"):
             m["director"] = ov["director"]
-        if ov.get("genres") and not m.get("genres"):
+        if ov.get("genres"):
             m["genres"] = ov["genres"]
         applied += 1
 

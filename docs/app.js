@@ -105,7 +105,7 @@ function renderBanner() {
     return;
   }
 
-  text.textContent = msg;
+  text.innerHTML = msg;
   banner.classList.remove('hidden');
 
   closeBtn.addEventListener('click', () => {
@@ -319,54 +319,38 @@ function renderView() {
   } else {
     renderByLocation(main, filtered);
   }
+
+  // Scroll expanded detail into view
+  if (expandedTitle) {
+    requestAnimationFrame(() => {
+      const detail = main.querySelector('.grid-detail');
+      if (detail) detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
 }
 
 function getMovieMeta(showings) {
   const s = showings[0];
   const parts = [];
-  if (s.director) parts.push(s.director);
   if (s.year) parts.push(s.year);
   if (s.genres) parts.push(s.genres);
   return parts.join(' / ');
 }
 
+function getShortMeta(showings) {
+  const s = showings[0];
+  return s.year ? String(s.year) : '';
+}
+
 function getPoster(showings) {
-  const s = showings[0];
-  return s.poster_url || null;
+  return showings[0]?.poster_url || null;
 }
 
-function getRating(showings) {
-  const s = showings[0];
-  return s.rating || null;
+function getVenueCount(showings) {
+  return new Set(showings.map(s => s.theater)).size;
 }
 
-function renderMovieCard(title, showings, renderShowtimes) {
-  const meta = getMovieMeta(showings);
-  const poster = getPoster(showings);
-  const rating = getRating(showings);
-
-  let html = '<div class="movie-card">';
-  if (poster) {
-    html += '<div class="card-with-poster">';
-    html += `<img class="card-poster" src="${esc(poster)}" alt="" loading="lazy">`;
-    html += '<div class="card-body">';
-  }
-
-  html += `<div class="movie-title">${esc(title)}</div>`;
-  if (meta || rating) {
-    html += '<div class="movie-meta">';
-    if (meta) html += esc(meta);
-    if (rating) html += `<span class="rating-badge">${rating}</span>`;
-    html += '</div>';
-  }
-
-  html += renderShowtimes();
-
-  if (poster) html += '</div></div>';
-  html += '</div>';
-  return html;
-}
-
+// Render showtime detail rows (used inside expanded cards)
 function renderShowtimeRows(showings, groupKey) {
   const grouped = groupBy(showings, groupKey);
   let html = '';
@@ -385,18 +369,76 @@ function renderShowtimeRows(showings, groupKey) {
   return html;
 }
 
-function renderByDate(container, movies) {
+// ===================== POSTER GRID =====================
+
+let expandedTitle = null;
+
+function renderPosterGrid(container, movies, groupKey) {
   const byTitle = groupBy(movies, 'title');
-  let html = '<div class="date-section">';
-  html += `<div class="date-heading">${formatDayHeading(activeDate)}</div>`;
+  const titles = Object.keys(byTitle).sort();
 
-  Object.keys(byTitle).sort().forEach(title => {
+  let html = '<div class="poster-grid">';
+  titles.forEach(title => {
     const showings = byTitle[title];
-    html += renderMovieCard(title, showings, () => renderShowtimeRows(showings, 'theater'));
-  });
+    const poster = getPoster(showings);
+    const meta = getShortMeta(showings);
+    const isExpanded = expandedTitle === title;
+    const noPoster = !poster;
 
+    html += `<div class="grid-item ${isExpanded ? 'expanded' : ''}" data-title="${esc(title)}">`;
+    html += '<div class="grid-poster-wrap">';
+    if (poster) {
+      html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
+    } else {
+      html += `<div class="grid-poster grid-poster-placeholder">${esc(title.slice(0, 2).toUpperCase())}</div>`;
+    }
+    html += '</div>';
+    html += `<div class="grid-title">${esc(title)}</div>`;
+    if (meta) html += `<div class="grid-meta">${esc(meta)}</div>`;
+    html += '</div>';
+
+    // Expanded detail panel (injected after the grid item)
+    if (isExpanded) {
+      const fullMeta = getMovieMeta(showings);
+      html += '<div class="grid-detail">';
+      html += '<div class="grid-detail-inner">';
+      if (poster) html += `<img class="detail-poster" src="${esc(poster)}" alt="" loading="lazy">`;
+      html += '<div class="detail-body">';
+      html += `<div class="detail-title">${esc(title)}</div>`;
+      if (fullMeta) html += `<div class="detail-meta">${esc(fullMeta)}</div>`;
+      html += renderShowtimeRows(showings, groupKey);
+      html += '</div></div></div>';
+    }
+  });
   html += '</div>';
+  return html;
+}
+
+function attachGridListeners(container, movies, groupKey) {
+  container.querySelectorAll('.grid-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      // Don't toggle if clicking a showtime link inside expanded detail
+      if (e.target.closest('.grid-detail')) return;
+      const title = item.dataset.title;
+      expandedTitle = expandedTitle === title ? null : title;
+      renderView();
+    });
+  });
+  // Also allow closing by clicking the detail panel background
+  container.querySelectorAll('.grid-detail').forEach(detail => {
+    detail.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // let links work
+      expandedTitle = null;
+      renderView();
+    });
+  });
+}
+
+function renderByDate(container, movies) {
+  let html = `<div class="date-heading">${formatDayHeading(activeDate)}</div>`;
+  html += renderPosterGrid(container, movies, 'theater');
   container.innerHTML = html;
+  attachGridListeners(container, movies, 'theater');
 }
 
 function renderByLocation(container, movies) {
@@ -405,19 +447,19 @@ function renderByLocation(container, movies) {
 
   Object.keys(byTheater).sort().forEach(theater => {
     const theaterMovies = byTheater[theater];
-    const byTitle = groupBy(theaterMovies, 'title');
-
-    html += '<div class="location-section">';
+    html += `<div class="location-section">`;
     html += `<div class="date-heading">${esc(theater)}</div>`;
-
-    Object.keys(byTitle).sort().forEach(title => {
-      const showings = byTitle[title];
-      html += renderMovieCard(title, showings, () => renderShowtimeRows(showings, 'date'));
-    });
+    html += renderPosterGrid(container, theaterMovies, 'date');
     html += '</div>';
   });
 
   container.innerHTML = html;
+
+  // Attach listeners for all grids
+  container.querySelectorAll('.poster-grid').forEach(grid => {
+    const theater = grid.closest('.location-section')?.querySelector('.date-heading')?.textContent;
+    attachGridListeners(container, movies, 'date');
+  });
 }
 
 // ===================== CATEGORIZATION (client-side fallback) =====================
