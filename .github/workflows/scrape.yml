@@ -1,0 +1,48 @@
+name: Scrape & Deploy
+
+on:
+  schedule:
+    # Run twice daily: 8am and 4pm Mountain Time (2pm and 10pm UTC)
+    - cron: '0 14,22 * * *'
+  workflow_dispatch: # Allow manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('scraper/requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Run scraper
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: python scraper/main.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/movies.json scraper/.tmdb_cache.json
+          git diff --staged --quiet || git commit -m "Update movie data $(date -u '+%Y-%m-%d %H:%M') UTC [automated]"
+          git push

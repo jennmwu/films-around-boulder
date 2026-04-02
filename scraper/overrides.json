@@ -1,0 +1,18 @@
+{
+  "_comment": "Manual overrides for films TMDB can't match or matches wrong. Key is lowercase title. Fields here take priority over TMDB.",
+  "daisies": {
+    "year": 1966,
+    "director": "Vera Chytilova",
+    "genres": "Comedy, Drama"
+  },
+  "marty supreme": {
+    "year": 2025,
+    "director": "Josh Safdie",
+    "genres": "Drama"
+  },
+  "marty supreme | oscars\u00ae movie week 2026": {
+    "year": 2025,
+    "director": "Josh Safdie",
+    "genres": "Drama"
+  }
+}

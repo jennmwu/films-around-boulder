@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAB - Films Around Boulder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="marquee-scene">
+    <div class="marquee-frame">
+      <div class="bulb-border" id="bulb-border"></div>
+      <div class="letter-board">
+        <div class="board-line fab">FAB!</div>
+        <div class="board-line small">Now Showing</div>
+        <div class="board-line big">Films Around Boulder</div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-bar">
+      <div class="view-toggle">
+        <button class="toggle-btn active" data-view="date">By Date</button>
+        <button class="toggle-btn" data-view="location">By Location</button>
+      </div>
+      <button class="filter-toggle" id="filter-toggle">Filters</button>
+    </div>
+    <div class="filter-drawer hidden" id="filter-drawer">
+      <div class="filter-group">
+        <div class="filter-label">Theaters</div>
+        <div class="filter-chips" id="filters"></div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-label">Type</div>
+        <div class="filter-chips" id="category-filters"></div>
+      </div>
+    </div>
+    <div class="date-nav" id="date-nav"></div>
+  </header>
+
+  <div class="banner hidden" id="banner">
+    <span class="banner-text" id="banner-text"></span>
+    <button class="banner-close" id="banner-close">x</button>
+  </div>
+
+  <main id="main"></main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-about" id="footer-about">
+        <p class="footer-tagline">A personal project tracking indie, arthouse, and repertory film screenings across Boulder and Denver.</p>
+      </div>
+      <div class="footer-meta">
+        <p class="updated" id="updated"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    // Generate bulbs around the border seamlessly
+    (function() {
+      const border = document.getElementById('bulb-border');
+      const frame = border.parentElement;
+
+      function placeBulbs() {
+        border.innerHTML = '';
+        const fw = frame.offsetWidth;
+        const fh = frame.offsetHeight;
+        const spacing = 14;
+        const inset = 8;
+
+        const positions = [];
+
+        // Top edge: left to right
+        for (let x = inset; x <= fw - inset; x += spacing) {
+          positions.push([x, inset]);
+        }
+        // Right edge: top to bottom (skip top-right corner)
+        for (let y = inset + spacing; y <= fh - inset; y += spacing) {
+          positions.push([fw - inset, y]);
+        }
+        // Bottom edge: right to left (skip bottom-right corner)
+        for (let x = fw - inset - spacing; x >= inset; x -= spacing) {
+          positions.push([x, fh - inset]);
+        }
+        // Left edge: bottom to top (skip both corners)
+        for (let y = fh - inset - spacing; y >= inset + spacing; y -= spacing) {
+          positions.push([inset, y]);
+        }
+
+        positions.forEach((pos, i) => {
+          const bulb = document.createElement('span');
+          bulb.className = 'bulb ' + (i % 2 === 0 ? 'a' : 'b');
+          bulb.style.left = pos[0] + 'px';
+          bulb.style.top = pos[1] + 'px';
+          border.appendChild(bulb);
+        });
+      }
+
+      placeBulbs();
+      window.addEventListener('resize', placeBulbs);
+    })();
+  </script>
+</body>
+</html>
