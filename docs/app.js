@@ -40,6 +40,7 @@ const SORT_OPTIONS = [
   { key: 'recommended', label: 'Recommended' },
   { key: 'alpha', label: 'A-Z' },
   { key: 'year', label: 'Newest' },
+  { key: 'oldest', label: 'Oldest' },
 ];
 
 let data = null;
@@ -266,6 +267,13 @@ function sortTitles(titles, byTitle) {
       return yb - ya || a.localeCompare(b);
     });
   }
+  if (activeSort === 'oldest') {
+    return titles.sort((a, b) => {
+      const ya = byTitle[a][0]?.year || 9999;
+      const yb = byTitle[b][0]?.year || 9999;
+      return ya - yb || a.localeCompare(b);
+    });
+  }
   // Recommended: prioritize indie/classic/back-in-theaters + higher Letterboxd, then new releases
   return titles.sort((a, b) => {
     const sa = getRecommendedScore(byTitle[a]);
@@ -278,16 +286,24 @@ function getRecommendedScore(showings) {
   const s = showings[0];
   const cats = s.categories || [];
   let score = 0;
-  // Boost non-new-release categories
-  if (cats.includes('Independent')) score += 30;
-  if (cats.includes('Classic')) score += 25;
-  if (cats.includes('Back in Theaters')) score += 20;
-  if (cats.includes('Festival')) score += 35;
-  // Letterboxd rating boost (0-5 scale, multiply by 10)
-  if (s.letterboxd_rating) score += s.letterboxd_rating * 10;
-  else if (s.imdb_rating) score += s.imdb_rating * 4;
-  // Small boost for having a poster (enriched = better data)
-  if (s.poster_url) score += 5;
+
+  // Letterboxd is the primary signal (0-5 scale, heavy weight)
+  if (s.letterboxd_rating) score += s.letterboxd_rating * 20;
+  else if (s.imdb_rating) score += s.imdb_rating * 6;
+
+  // Category boosts (smaller than ratings, act as tiebreakers)
+  if (cats.includes('Classic')) score += 15;
+  if (cats.includes('Back in Theaters')) score += 12;
+  if (cats.includes('Independent')) score += 10;
+  if (cats.includes('Festival')) score += 15;
+
+  // Penalize pure new releases with no ratings (likely blockbusters with no critical consensus yet)
+  if (cats.length === 1 && cats[0] === 'New Release' && !s.letterboxd_rating && !s.imdb_rating) {
+    score -= 20;
+  }
+
+  // Small boost for having a poster
+  if (s.poster_url) score += 2;
   return score;
 }
 
