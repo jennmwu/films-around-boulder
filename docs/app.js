@@ -180,13 +180,18 @@ function renderFilters(theaters) {
   const container = document.getElementById('filters');
   container.innerHTML = '';
   addChip(container, 'All', 'filter-chip active', () => {
-    activeFilters.size === theaters.length ? activeFilters.clear() : (activeFilters = new Set(theaters));
+    activeFilters = new Set(theaters);
     syncFilterChips(theaters);
     refreshAndRender();
   });
   theaters.forEach(t => {
-    const chip = addChip(container, shortName(t), 'filter-chip active', () => {
-      activeFilters.has(t) ? activeFilters.delete(t) : activeFilters.add(t);
+    const chip = addChip(container, shortName(t), 'filter-chip', () => {
+      // Single-select: if already the only one selected, go back to All
+      if (activeFilters.size === 1 && activeFilters.has(t)) {
+        activeFilters = new Set(theaters);
+      } else {
+        activeFilters = new Set([t]);
+      }
       syncFilterChips(theaters);
       refreshAndRender();
     });
@@ -195,8 +200,9 @@ function renderFilters(theaters) {
 }
 
 function syncFilterChips(theaters) {
+  const isAll = activeFilters.size === theaters.length;
   document.querySelectorAll('#filters .filter-chip').forEach(chip => {
-    if (!chip.dataset.theater) chip.classList.toggle('active', activeFilters.size === theaters.length);
+    if (!chip.dataset.theater) chip.classList.toggle('active', isAll);
     else chip.classList.toggle('active', activeFilters.has(chip.dataset.theater));
   });
 }
@@ -208,13 +214,18 @@ function renderCategoryFilters(categories) {
   container.innerHTML = '';
   const ordered = ALL_CATEGORIES.filter(c => categories.includes(c));
   addChip(container, 'All', 'cat-chip active', () => {
-    activeCategories.size === ordered.length ? activeCategories.clear() : (activeCategories = new Set(ordered));
+    activeCategories = new Set(ordered);
     syncCatChips(ordered);
     refreshAndRender();
   });
   ordered.forEach(cat => {
-    const chip = addChip(container, cat, 'cat-chip active', () => {
-      activeCategories.has(cat) ? activeCategories.delete(cat) : activeCategories.add(cat);
+    const chip = addChip(container, cat, 'cat-chip', () => {
+      // Single-select: if already the only one selected, go back to All
+      if (activeCategories.size === 1 && activeCategories.has(cat)) {
+        activeCategories = new Set(ordered);
+      } else {
+        activeCategories = new Set([cat]);
+      }
       syncCatChips(ordered);
       refreshAndRender();
     });
@@ -224,8 +235,9 @@ function renderCategoryFilters(categories) {
 }
 
 function syncCatChips(categories) {
+  const isAll = activeCategories.size === categories.length;
   document.querySelectorAll('#category-filters .cat-chip').forEach(chip => {
-    if (!chip.dataset.category) chip.classList.toggle('active', activeCategories.size === categories.length);
+    if (!chip.dataset.category) chip.classList.toggle('active', isAll);
     else chip.classList.toggle('active', activeCategories.has(chip.dataset.category));
   });
 }
