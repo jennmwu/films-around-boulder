@@ -1341,5 +1341,605 @@
     "vote_average": 6.6,
     "popularity": 4.214,
     "genres": "Drama, Romance"
+  },
+  "_detail_1219620": {
+    "runtime": 146,
+    "director": "Cherien Dabis",
+    "imdb_id": "tt29344894"
+  },
+  "_detail_1244517": {
+    "runtime": 105,
+    "director": "Stephanie Laing",
+    "imdb_id": "tt21045208"
+  },
+  "_detail_1517069": {
+    "runtime": 87,
+    "director": "Sofia Coppola",
+    "imdb_id": "tt37660536"
+  },
+  "_detail_1451867": {
+    "runtime": 99,
+    "director": "Werner Herzog",
+    "imdb_id": "tt35237771"
+  },
+  "_detail_687163": {
+    "runtime": 157,
+    "director": "Phil Lord",
+    "imdb_id": "tt12042730"
+  },
+  "_detail_1226863": {
+    "runtime": 98,
+    "director": "Aaron Horvath",
+    "imdb_id": "tt28650488"
+  },
+  "_detail_1327819": {
+    "runtime": 105,
+    "director": "Daniel Chong",
+    "imdb_id": "tt26443616"
+  },
+  "_detail_1325734": {
+    "runtime": 105,
+    "director": "Kristoffer Borgli",
+    "imdb_id": "tt33071426"
+  },
+  "_detail_1596335": {
+    "runtime": 104,
+    "director": "Daniel Roher",
+    "imdb_id": "tt39150120"
+  },
+  "_detail_25095": {
+    "runtime": 105,
+    "director": "Peter Kosminsky",
+    "imdb_id": "tt0104181"
+  },
+  "_detail_665": {
+    "runtime": 212,
+    "director": "William Wyler",
+    "imdb_id": "tt0052618"
+  },
+  "_detail_1266127": {
+    "runtime": 108,
+    "director": "Matt Bettinelli-Olpin",
+    "imdb_id": "tt33978029"
+  },
+  "_detail_1242015": {
+    "runtime": 106,
+    "director": "Luc Dardenne",
+    "imdb_id": "tt32909489"
+  },
+  "_detail_1367642": {
+    "runtime": 114,
+    "director": "Vanessa Caswill",
+    "imdb_id": "tt33714084"
+  },
+  "_detail_1292695": {
+    "runtime": 94,
+    "director": "Kirill Sokolov",
+    "imdb_id": "tt31728330"
+  },
+  "_detail_1450527": {
+    "runtime": 104,
+    "director": "Meredith Alloway",
+    "imdb_id": "tt30691214"
+  },
+  "_detail_1421977": {
+    "runtime": 91,
+    "director": "Matthew Shear",
+    "imdb_id": "tt35519497"
+  },
+  "_detail_1284460": {
+    "runtime": 128,
+    "director": "Julia Ducournau",
+    "imdb_id": "tt32275943"
+  },
+  "_detail_1432596": {
+    "runtime": 120,
+    "director": "Annemarie Jacir",
+    "imdb_id": "tt29271622"
+  },
+  "_detail_1480387": {
+    "runtime": 94,
+    "director": "Ian Tuason",
+    "imdb_id": "tt35892608"
+  },
+  "_detail_891": {
+    "runtime": 138,
+    "director": "Alan J. Pakula",
+    "imdb_id": "tt0074119"
+  },
+  "_detail_1309083": {
+    "runtime": 83,
+    "director": "Rod Blackhurst",
+    "imdb_id": "tt32639175"
+  },
+  "_detail_957": {
+    "runtime": 96,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0094012"
+  },
+  "_detail_62": {
+    "runtime": 149,
+    "director": "Stanley Kubrick",
+    "imdb_id": "tt0062622"
+  },
+  "_detail_9598": {
+    "runtime": 92,
+    "director": "Chris Noonan",
+    "imdb_id": "tt0112431"
+  },
+  "_detail_1472178": {
+    "runtime": 3,
+    "director": "Emilija Miller",
+    "imdb_id": null
+  },
+  "_detail_338969": {
+    "runtime": 102,
+    "director": "Macon Blair",
+    "imdb_id": "tt1633359"
+  },
+  "_detail_15239": {
+    "runtime": 82,
+    "director": "Lloyd Kaufman",
+    "imdb_id": "tt0090190"
+  },
+  "_detail_157851": {
+    "runtime": 112,
+    "director": "David Cronenberg",
+    "imdb_id": "tt2172584"
+  },
+  "_detail_10156": {
+    "runtime": 92,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0082517"
+  },
+  "_detail_639590": {
+    "runtime": 104,
+    "director": "Thierry Fr\u00e9maux",
+    "imdb_id": "tt10323412"
+  },
+  "_detail_1287413": {
+    "runtime": 90,
+    "director": "Beatriz Calleja",
+    "imdb_id": "tt29034158"
+  },
+  "_detail_309444": {
+    "runtime": 0,
+    "director": null,
+    "imdb_id": null
+  },
+  "_detail_1243479": {
+    "runtime": 275,
+    "director": "Louise Weard",
+    "imdb_id": "tt35022825"
+  },
+  "_detail_1400791": {
+    "runtime": 95,
+    "director": "Amber Fares",
+    "imdb_id": "tt34964219"
+  },
+  "_detail_1019939": {
+    "runtime": 108,
+    "director": "Mike Cheslik",
+    "imdb_id": "tt12818328"
+  },
+  "_detail_376570": {
+    "runtime": 82,
+    "director": "Mike Flanagan",
+    "imdb_id": "tt5022702"
+  },
+  "_detail_855435": {
+    "runtime": 97,
+    "director": "Daniel Goldhaber",
+    "imdb_id": "tt14619456"
+  },
+  "_detail_1422120": {
+    "runtime": 105,
+    "director": "Tyler Cornack",
+    "imdb_id": "tt34435532"
+  },
+  "_detail_540": {
+    "runtime": 91,
+    "director": "Angela Robinson",
+    "imdb_id": "tt0367631"
+  },
+  "_detail_843342": {
+    "runtime": 113,
+    "director": "Aneil Karia",
+    "imdb_id": "tt7798632"
+  },
+  "_detail_1455079": {
+    "runtime": 105,
+    "director": "Kat Coiro",
+    "imdb_id": "tt36352591"
+  },
+  "_detail_1559764": {
+    "runtime": 111,
+    "director": "Rory Kennedy",
+    "imdb_id": null
+  },
+  "_detail_1357982": {
+    "runtime": 17,
+    "director": "Tim Ewalts",
+    "imdb_id": null
+  },
+  "_detail_1474980": {
+    "runtime": 17,
+    "director": "Alexander Molochnikov",
+    "imdb_id": "tt38066454"
+  },
+  "_detail_1429704": {
+    "runtime": 15,
+    "director": "Justine Martin",
+    "imdb_id": "tt36304352"
+  },
+  "_detail_1316745": {
+    "runtime": 8,
+    "director": "John Kelly",
+    "imdb_id": "tt33019507"
+  },
+  "_detail_1302562": {
+    "runtime": 15,
+    "director": "Konstantin Bronzit",
+    "imdb_id": "tt35676079"
+  },
+  "_detail_1242628": {
+    "runtime": 15,
+    "director": "Sam Cutler-Kreutz",
+    "imdb_id": "tt21342434"
+  },
+  "_detail_1376838": {
+    "runtime": 110,
+    "director": "Cyril Aris",
+    "imdb_id": "tt32622406"
+  },
+  "_detail_1631822": {
+    "runtime": 91,
+    "director": "Sasha Waters",
+    "imdb_id": "tt39643966"
+  },
+  "_detail_1206197": {
+    "runtime": 39,
+    "director": "Ryan Boucetta",
+    "imdb_id": null
+  },
+  "_detail_1408208": {
+    "runtime": 95,
+    "director": "Genki Kawamura",
+    "imdb_id": "tt35222590"
+  },
+  "_detail_1132493": {
+    "runtime": 100,
+    "director": "Sam Pollard",
+    "imdb_id": "tt18764730"
+  },
+  "_detail_1352520": {
+    "runtime": 78,
+    "director": "Maxim Derevianko",
+    "imdb_id": "tt28241870"
+  },
+  "_detail_1269644": {
+    "runtime": 93,
+    "director": "Fatih Akin",
+    "imdb_id": "tt22507216"
+  },
+  "_detail_1596278": {
+    "runtime": 93,
+    "director": "Sara Dosa",
+    "imdb_id": "tt39163015"
+  },
+  "_detail_1596330": {
+    "runtime": 92,
+    "director": "David Alvarado",
+    "imdb_id": "tt39150003"
+  },
+  "_detail_1510355": {
+    "runtime": 300,
+    "director": null,
+    "imdb_id": null
+  },
+  "_detail_1443826": {
+    "runtime": 15,
+    "director": "Keenan DesPlanques",
+    "imdb_id": null
+  },
+  "_detail_1492865": {
+    "runtime": 98,
+    "director": "Carl Deal",
+    "imdb_id": "tt36748956"
+  },
+  "_detail_1313229": {
+    "runtime": 96,
+    "director": "Pauline Loqu\u00e8s",
+    "imdb_id": "tt35519445"
+  },
+  "_detail_1382575": {
+    "runtime": 86,
+    "director": "John Dower",
+    "imdb_id": "tt29719486"
+  },
+  "_detail_1480404": {
+    "runtime": 79,
+    "director": "Vickie Curtis",
+    "imdb_id": "tt36870657"
+  },
+  "_detail_1400793": {
+    "runtime": 95,
+    "director": "Sara Khaki",
+    "imdb_id": "tt10196414"
+  },
+  "_detail_1374313": {
+    "runtime": 80,
+    "director": "Maciej J. Drygas",
+    "imdb_id": "tt34673862"
+  },
+  "_detail_1530100": {
+    "runtime": 81,
+    "director": "Luis Ferrer",
+    "imdb_id": "tt35234740"
+  },
+  "_detail_1622437": {
+    "runtime": 12,
+    "director": "Maximillian Weston",
+    "imdb_id": null
+  },
+  "_detail_1445251": {
+    "runtime": 23,
+    "director": "Irving Serrano",
+    "imdb_id": "tt36161223"
+  },
+  "_detail_1400731": {
+    "runtime": 87,
+    "director": "Tony Benna",
+    "imdb_id": "tt34963034"
+  },
+  "_detail_1529023": {
+    "runtime": 118,
+    "director": "Frank van Passel",
+    "imdb_id": "tt22872358"
+  },
+  "_detail_1329471": {
+    "runtime": 105,
+    "director": "Adam Rehmeier",
+    "imdb_id": "tt33365126"
+  },
+  "_detail_1215458": {
+    "runtime": 78,
+    "director": "Isabel Hagen",
+    "imdb_id": "tt30345011"
+  },
+  "_detail_1548": {
+    "runtime": 111,
+    "director": "Terry Zwigoff",
+    "imdb_id": "tt0162346"
+  },
+  "_detail_1530807": {
+    "runtime": 97,
+    "director": "Christopher Charles Scott",
+    "imdb_id": null
+  },
+  "_detail_1599402": {
+    "runtime": 7,
+    "director": "Anna Baumgarten",
+    "imdb_id": null
+  },
+  "_detail_1233361": {
+    "runtime": 15,
+    "director": "Florence Miailhe",
+    "imdb_id": "tt30970587"
+  },
+  "_detail_1382688": {
+    "runtime": 15,
+    "director": "Fabian Munsterhjelm",
+    "imdb_id": "tt32831930"
+  },
+  "_detail_1422627": {
+    "runtime": 93,
+    "director": "Andrew Lynch",
+    "imdb_id": "tt31034190"
+  },
+  "_detail_1601652": {
+    "runtime": 29,
+    "director": "Ben Proudfoot",
+    "imdb_id": "tt39196105"
+  },
+  "_detail_1532787": {
+    "runtime": 82,
+    "director": "Robb Moss",
+    "imdb_id": "tt37969239"
+  },
+  "_detail_1317213": {
+    "runtime": 17,
+    "director": "Aisling Byrne",
+    "imdb_id": "tt32135528"
+  },
+  "_detail_1590081": {
+    "runtime": 21,
+    "director": "Zsuzsanna Konr\u00e1d",
+    "imdb_id": "tt35696157"
+  },
+  "_detail_10137": {
+    "runtime": 84,
+    "director": "Rob Minkoff",
+    "imdb_id": "tt0164912"
+  },
+  "_detail_1396455": {
+    "runtime": 11,
+    "director": "Casa Colombo",
+    "imdb_id": null
+  },
+  "_detail_1184418": {
+    "runtime": 112,
+    "director": "Monica Guerritore",
+    "imdb_id": "tt36911433"
+  },
+  "_detail_1648243": {
+    "runtime": 18,
+    "director": "Matteo Arango Guerrero",
+    "imdb_id": null
+  },
+  "_detail_1484620": {
+    "runtime": 98,
+    "director": "Felipe Bustos Sierra",
+    "imdb_id": "tt36966956"
+  },
+  "_detail_1640663": {
+    "runtime": 195,
+    "director": "Ha Jung-jae",
+    "imdb_id": null
+  },
+  "_detail_1284016": {
+    "runtime": 98,
+    "director": "John Carney",
+    "imdb_id": "tt32267691"
+  },
+  "_detail_1574074": {
+    "runtime": 75,
+    "director": "Lorenzo Ferro",
+    "imdb_id": "tt39381628"
+  },
+  "_detail_1537518": {
+    "runtime": 98,
+    "director": "Orlando von Einsiedel",
+    "imdb_id": "tt38063160"
+  },
+  "_detail_1400357": {
+    "runtime": 100,
+    "director": "Steven Soderbergh",
+    "imdb_id": "tt34966562"
+  },
+  "_detail_1461058": {
+    "runtime": 81,
+    "director": "Jon Glassberg",
+    "imdb_id": "tt36437006"
+  },
+  "_detail_1629058": {
+    "runtime": 96,
+    "director": "Piero F. Giunti",
+    "imdb_id": "tt32139153"
+  },
+  "_detail_1591604": {
+    "runtime": 100,
+    "director": "J.M. Harper",
+    "imdb_id": "tt38952225"
+  },
+  "_detail_11031": {
+    "runtime": 82,
+    "director": "Rob Reiner",
+    "imdb_id": "tt0088258"
+  },
+  "_detail_1652218": {
+    "runtime": 2,
+    "director": "Raman",
+    "imdb_id": null
+  },
+  "_detail_1380166": {
+    "runtime": 102,
+    "director": "Jay Duplass",
+    "imdb_id": "tt34378128"
+  },
+  "_detail_1548237": {
+    "runtime": 0,
+    "director": "Ben Knight",
+    "imdb_id": null
+  },
+  "_detail_1581088": {
+    "runtime": 45,
+    "director": "Ariane Moisan",
+    "imdb_id": null
+  },
+  "_detail_1596560": {
+    "runtime": 7,
+    "director": "Jonah Erofeyeff",
+    "imdb_id": null
+  },
+  "_detail_1596312": {
+    "runtime": 99,
+    "director": "Judd Ehrlich",
+    "imdb_id": "tt39150251"
+  },
+  "_detail_1465751": {
+    "runtime": 93,
+    "director": "Rick Gomez",
+    "imdb_id": "tt31193382"
+  },
+  "_detail_1193501": {
+    "runtime": 100,
+    "director": "Corin Hardy",
+    "imdb_id": "tt29550683"
+  },
+  "_detail_1432337": {
+    "runtime": 27,
+    "director": "Allison Argo",
+    "imdb_id": null
+  },
+  "_detail_1612902": {
+    "runtime": 60,
+    "director": "Dawn Kish",
+    "imdb_id": null
+  },
+  "_detail_1593788": {
+    "runtime": 0,
+    "director": null,
+    "imdb_id": null
+  },
+  "_detail_9390": {
+    "runtime": 139,
+    "director": "Cameron Crowe",
+    "imdb_id": "tt0116695"
+  },
+  "_detail_1407278": {
+    "runtime": 83,
+    "director": "Alice Maio Mackay",
+    "imdb_id": "tt37161608"
+  },
+  "_detail_11901": {
+    "runtime": 105,
+    "director": "Clint Eastwood",
+    "imdb_id": "tt0068699"
+  },
+  "_detail_1174492": {
+    "runtime": 83,
+    "director": "Rachel Kempf",
+    "imdb_id": "tt31912070"
+  },
+  "_detail_848791": {
+    "runtime": 117,
+    "director": "Thomas M. Wright",
+    "imdb_id": "tt11897478"
+  },
+  "_detail_1390300": {
+    "runtime": 105,
+    "director": "Jorma Taccone",
+    "imdb_id": "tt34685692"
+  },
+  "_detail_1445363": {
+    "runtime": 98,
+    "director": "Baz Luhrmann",
+    "imdb_id": "tt35003538"
+  },
+  "_detail_565310": {
+    "runtime": 100,
+    "director": "Lulu Wang",
+    "imdb_id": "tt8637428"
+  },
+  "_detail_1408324": {
+    "runtime": 73,
+    "director": "Josh Heaps",
+    "imdb_id": "tt35223935"
+  },
+  "_detail_1304313": {
+    "runtime": 136,
+    "director": "Lee Cronin",
+    "imdb_id": "tt32612507"
+  },
+  "_detail_9056": {
+    "runtime": 100,
+    "director": "Jackie Chan",
+    "imdb_id": "tt0089374"
+  },
+  "_detail_666211": {
+    "runtime": 80,
+    "director": "William Greaves",
+    "imdb_id": "tt12546316"
   }
 }

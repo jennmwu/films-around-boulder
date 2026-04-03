@@ -195,7 +195,82 @@ def enrich_movies(movies):
 
     print(f"[TMDB] Enriched {enriched}/{len(movies)} showings with posters")
 
+    # Fetch details (runtime, director) for movies with TMDB IDs
+    _fetch_details(api_key, movies, cache)
+
     save_cache(cache)
+
+
+def _fetch_details(api_key, movies, cache):
+    """Fetch runtime and director from TMDB movie details API.
+    Uses a detail cache keyed by TMDB ID to avoid re-fetching.
+    """
+    # Collect unique TMDB IDs that need details
+    needs_detail = {}
+    for m in movies:
+        tmdb_id = m.get("tmdb_id")
+        if not tmdb_id:
+            continue
+        detail_key = f"_detail_{tmdb_id}"
+        if detail_key in cache:
+            detail = cache[detail_key]
+        else:
+            needs_detail[tmdb_id] = detail_key
+
+    if not needs_detail:
+        print(f"[TMDB] All details cached")
+    else:
+        print(f"[TMDB] Fetching details for {len(needs_detail)} movies...")
+        fetched = 0
+        for tmdb_id, detail_key in needs_detail.items():
+            try:
+                resp = requests.get(
+                    f"{API_BASE}/movie/{tmdb_id}",
+                    params={"api_key": api_key, "append_to_response": "credits"},
+                    headers=HEADERS,
+                    timeout=10,
+                )
+                if resp.status_code == 429:
+                    time.sleep(2)
+                    resp = requests.get(
+                        f"{API_BASE}/movie/{tmdb_id}",
+                        params={"api_key": api_key, "append_to_response": "credits"},
+                        headers=HEADERS,
+                        timeout=10,
+                    )
+                if resp.status_code == 200:
+                    d = resp.json()
+                    # Extract director from credits
+                    director = None
+                    for crew in d.get("credits", {}).get("crew", []):
+                        if crew.get("job") == "Director":
+                            director = crew.get("name")
+                            break
+                    cache[detail_key] = {
+                        "runtime": d.get("runtime"),
+                        "director": director,
+                        "imdb_id": d.get("imdb_id"),
+                    }
+                    fetched += 1
+                if fetched % 30 == 0:
+                    time.sleep(1)
+            except Exception as e:
+                print(f"[TMDB] Error fetching detail for {tmdb_id}: {e}")
+
+        print(f"[TMDB] Fetched {fetched} movie details")
+
+    # Apply details to movies
+    for m in movies:
+        tmdb_id = m.get("tmdb_id")
+        if not tmdb_id:
+            continue
+        detail = cache.get(f"_detail_{tmdb_id}", {})
+        if detail.get("runtime"):
+            m["runtime"] = detail["runtime"]
+        if detail.get("director") and not m.get("director"):
+            m["director"] = detail["director"]
+        if detail.get("imdb_id"):
+            m["imdb_id"] = detail["imdb_id"]
 
 
 def _search_movie(api_key, query, original_title, year_hint=None):
