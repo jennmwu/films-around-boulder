@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');</style>
+  </defs>
+  <rect width="32" height="32" rx="4" fill="#0a0a0a"/>
+  <text x="16" y="26" text-anchor="middle" font-family="'Bungee',sans-serif" font-weight="400" font-size="26" fill="#FFA400">!</text>
+</svg>
