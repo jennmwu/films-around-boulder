@@ -37,12 +37,13 @@ jobs:
       - name: Run scraper
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          MDBLIST_API_KEY: ${{ secrets.MDBLIST_API_KEY }}
         run: python scraper/main.py
 
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/movies.json scraper/.tmdb_cache.json
+          git add docs/movies.json scraper/.tmdb_cache.json scraper/.mdblist_cache.json
           git diff --staged --quiet || git commit -m "Update movie data $(date -u '+%Y-%m-%d %H:%M') UTC [automated]"
           git push
