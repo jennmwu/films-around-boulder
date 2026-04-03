@@ -138,10 +138,15 @@ main { max-width: 900px; margin: 0 auto; padding: 0 20px; min-height: 50vh; }
 .detail-meta { font-size: 13px; color: var(--text-dim); margin-top: 4px; }
 .detail-director { font-size: 13px; color: var(--text-dim); margin-top: 2px; }
 .detail-ratings { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
-.rating-pill { font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; border: 1px solid; }
-.rating-imdb { background: rgba(245, 197, 24, 0.12); color: #f5c518; border-color: #f5c518; }
-.rating-rt { background: rgba(250, 80, 60, 0.12); color: #fa503c; border-color: #fa503c; }
-.rating-lb { background: rgba(0, 210, 120, 0.12); color: #00d278; border-color: #00d278; }
+.rating-pill {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700;
+  padding: 3px 8px; border-radius: 3px; border: 1px solid;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.rating-logo { height: 14px; width: auto; flex-shrink: 0; }
+.rating-imdb { background: rgba(245, 197, 24, 0.12); color: #f5c518; border-color: rgba(245, 197, 24, 0.3); }
+.rating-rt { background: rgba(250, 80, 60, 0.12); color: #fa503c; border-color: rgba(250, 80, 60, 0.3); }
+.rating-lb { background: rgba(0, 210, 120, 0.12); color: #00d278; border-color: rgba(0, 210, 120, 0.3); }
 .detail-synopsis { font-size: 13px; color: var(--text-dim); margin-top: 10px; line-height: 1.5; }
 .detail-showtimes { margin-top: 12px; }
 
@@ -156,6 +161,11 @@ a.time-chip {
   color: var(--warm-white); text-decoration: none; transition: all 0.15s; border-radius: 3px;
 }
 a.time-chip:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+span.time-past {
+  font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
+  padding: 4px 10px; border: 1px solid #2a2a2a; color: #555;
+  border-radius: 3px; text-decoration: line-through; cursor: default;
+}
 .tag { font-family: 'Outfit', sans-serif; font-size: 10px; padding: 2px 7px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; }
 .tag-format { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
 

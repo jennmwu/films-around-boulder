@@ -238,10 +238,22 @@ function refreshAndRender() {
   renderDateNav(); renderView(); updateFilterBadge();
 }
 
-function renderView() {
+let lastRenderedView = null;
+let lastRenderedDate = null;
+
+function renderView(expandOnly) {
   const main = document.getElementById('main');
   const filtered = getFilteredMovies();
   if (filtered.length === 0) { main.innerHTML = '<div class="empty-state">Nothing playing with those filters.</div>'; return; }
+
+  // If only expanding/collapsing a card, do a targeted DOM update instead of full re-render
+  if (expandOnly && lastRenderedView === activeView && lastRenderedDate === activeDate) {
+    updateExpandState(main);
+    return;
+  }
+
+  lastRenderedView = activeView;
+  lastRenderedDate = activeDate;
 
   if (activeView === 'date') {
     const dayMovies = filtered.filter(m => m.date === activeDate);
@@ -257,6 +269,57 @@ function renderView() {
       if (detail) detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
+}
+
+function updateExpandState(main) {
+  // Remove existing detail panel with fade
+  const existing = main.querySelector('.grid-detail');
+  if (existing) existing.remove();
+
+  // Remove expanded class from all items
+  main.querySelectorAll('.grid-item.expanded, .lane-item.expanded').forEach(el => {
+    el.classList.remove('expanded');
+  });
+
+  if (!expandedTitle) return;
+
+  // Find the grid item to expand
+  const targetItem = main.querySelector(`.grid-item[data-title="${CSS.escape(expandedTitle)}"], .lane-item[data-title="${CSS.escape(expandedTitle)}"]`);
+  if (!targetItem) return;
+
+  targetItem.classList.add('expanded');
+
+  // Get showings for this title
+  const filtered = getFilteredMovies();
+  const showings = filtered.filter(m => m.title === expandedTitle);
+  if (showings.length === 0) return;
+
+  const groupKey = activeView === 'date' ? 'theater' : 'date';
+  const detailHtml = renderDetailPanel(showings, groupKey);
+
+  // Insert detail panel after the item
+  const wrapper = document.createElement('div');
+  wrapper.innerHTML = detailHtml;
+  const detailEl = wrapper.firstElementChild;
+  detailEl.style.opacity = '0';
+  detailEl.style.transform = 'translateY(-8px)';
+
+  // For grid items, insert after the item in the grid
+  if (targetItem.classList.contains('grid-item')) {
+    targetItem.insertAdjacentElement('afterend', detailEl);
+  } else {
+    // Lane item: insert after the lane wrap
+    const laneWrap = targetItem.closest('.location-lane-wrap');
+    if (laneWrap) laneWrap.insertAdjacentElement('afterend', detailEl);
+  }
+
+  // Animate in
+  requestAnimationFrame(() => {
+    detailEl.style.transition = 'opacity 0.2s, transform 0.2s';
+    detailEl.style.opacity = '1';
+    detailEl.style.transform = 'translateY(0)';
+    detailEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
 }
 
 // ===================== DETAIL PANEL =====================
@@ -285,13 +348,13 @@ function renderDetailPanel(showings, groupKey) {
   // Director
   if (director) html += `<div class="detail-director">Dir. ${esc(director)}</div>`;
 
-  // Ratings: IMDb, RT, Letterboxd
+  // Ratings: IMDb, RT, Letterboxd (with logos)
   const hasRatings = s.imdb_rating || s.rt_score || s.letterboxd_rating;
   if (hasRatings) {
     html += '<div class="detail-ratings">';
-    if (s.imdb_rating) html += `<span class="rating-pill rating-imdb">IMDb ${s.imdb_rating}</span>`;
-    if (s.rt_score) html += `<span class="rating-pill rating-rt">RT ${s.rt_score}%</span>`;
-    if (s.letterboxd_rating) html += `<span class="rating-pill rating-lb">LB ${s.letterboxd_rating}</span>`;
+    if (s.imdb_rating) html += `<span class="rating-pill rating-imdb"><svg class="rating-logo" viewBox="0 0 64 32" fill="none"><rect width="64" height="32" rx="4" fill="#f5c518"/><text x="32" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#000">IMDb</text></svg>${s.imdb_rating}</span>`;
+    if (s.rt_score) html += `<span class="rating-pill rating-rt"><svg class="rating-logo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fa503c"/><text x="12" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#fff">RT</text></svg>${s.rt_score}%</span>`;
+    if (s.letterboxd_rating) html += `<span class="rating-pill rating-lb"><svg class="rating-logo" viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5" fill="#00e054"/><circle cx="12" cy="12" r="5" fill="#40bcf4"/><circle cx="17.5" cy="12" r="5" fill="#ee7000"/></svg>${s.letterboxd_rating}</span>`;
     html += '</div>';
   }
 
@@ -312,6 +375,16 @@ function truncate(str, max) {
   return str.slice(0, max).replace(/\s+\S*$/, '') + '...';
 }
 
+function isTimePast(dateStr, timeStr) {
+  // Only check for today's date
+  const today = new Date().toISOString().slice(0, 10);
+  if (dateStr !== today) return false;
+  try {
+    const parsed = new Date(`${dateStr} ${timeStr}`);
+    return parsed < new Date();
+  } catch { return false; }
+}
+
 function renderShowtimeRows(showings, groupKey) {
   const grouped = groupBy(showings, groupKey);
   let html = '';
@@ -322,7 +395,12 @@ function renderShowtimeRows(showings, groupKey) {
     html += `<span class="${groupKey === 'theater' ? 'theater-name' : 'schedule-date'}">${label}</span>`;
     html += '<span class="times">';
     times.forEach(t => {
-      html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
+      const past = isTimePast(t.date, t.time);
+      if (past) {
+        html += `<span class="time-chip time-past">${esc(t.time)}</span>`;
+      } else {
+        html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
+      }
       if (t.format && t.format !== 'Standard') html += `<span class="tag tag-format">${esc(t.format)}</span>`;
     });
     html += '</span></div>';
@@ -412,10 +490,11 @@ function renderByLocation(container, movies) {
 
   // Attach click listeners to lane items
   container.querySelectorAll('.lane-item').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.grid-detail') || e.target.closest('a')) return;
       const title = item.dataset.title;
       expandedTitle = expandedTitle === title ? null : title;
-      renderView();
+      renderView(true);
     });
   });
   attachGridListeners(container);
@@ -433,7 +512,7 @@ function attachGridListeners(container) {
       if (e.target.closest('.grid-detail') || e.target.closest('a')) return;
       const title = item.dataset.title;
       expandedTitle = expandedTitle === title ? null : title;
-      renderView();
+      renderView(true);
     });
   });
 }
