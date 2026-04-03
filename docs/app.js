@@ -267,7 +267,6 @@ function renderDetailPanel(showings, groupKey) {
   const director = s.director;
   const synopsis = s.synopsis ? truncate(s.synopsis, 180) : '';
   const runtime = s.runtime ? `${s.runtime} min` : '';
-  const rating = s.rating;
   const year = s.year;
   const genres = s.genres;
 
@@ -286,10 +285,13 @@ function renderDetailPanel(showings, groupKey) {
   // Director
   if (director) html += `<div class="detail-director">Dir. ${esc(director)}</div>`;
 
-  // Rating
-  if (rating) {
+  // Ratings: IMDb, RT, Letterboxd
+  const hasRatings = s.imdb_rating || s.rt_score || s.letterboxd_rating;
+  if (hasRatings) {
     html += '<div class="detail-ratings">';
-    html += `<span class="rating-pill">TMDB ${rating}</span>`;
+    if (s.imdb_rating) html += `<span class="rating-pill rating-imdb">IMDb ${s.imdb_rating}</span>`;
+    if (s.rt_score) html += `<span class="rating-pill rating-rt">RT ${s.rt_score}%</span>`;
+    if (s.letterboxd_rating) html += `<span class="rating-pill rating-lb">LB ${s.letterboxd_rating}</span>`;
     html += '</div>';
   }
 

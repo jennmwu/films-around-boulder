@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from theaters import ifs, cinemark, landmark, alamo, dairy, sie, biff
 import tmdb
+import mdblist
 
 
 SCRAPERS = [
@@ -75,6 +76,12 @@ def run():
 
     # Apply manual overrides (works even without TMDB key)
     _apply_overrides(all_movies)
+
+    # Enrich with MDbList ratings (IMDb, RT, Letterboxd)
+    try:
+        mdblist.enrich_ratings(all_movies)
+    except Exception as e:
+        print(f"WARNING: MDbList enrichment failed: {e}")
 
     # Categorize movies
     _categorize_movies(all_movies)
