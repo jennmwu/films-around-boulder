@@ -95,6 +95,32 @@ async function init() {
 
   renderBanner();
 
+  // Marquee click: reset to home (unfiltered, By Date, today)
+  document.getElementById('marquee-home').addEventListener('click', (e) => {
+    e.preventDefault();
+    const allTheaters = [...new Set(data.movies.map(m => m.theater))];
+    activeFilters = new Set(allTheaters);
+    const allCats = new Set();
+    data.movies.forEach(m => (m.categories || []).forEach(c => allCats.add(c)));
+    activeCategories = new Set(allCats);
+    activeView = 'date';
+    const today = new Date().toISOString().slice(0, 10);
+    const dates = [...new Set(data.movies.map(m => m.date))].sort();
+    activeDate = dates.includes(today) ? today : dates[0];
+    activeSort = 'recommended';
+    expandedTitle = null;
+    drawerOpen = false;
+    document.getElementById('filter-drawer').classList.add('hidden');
+    document.getElementById('sort-select').value = 'recommended';
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.toggle-btn[data-view="date"]').classList.add('active');
+    syncFilterChips(allTheaters);
+    renderDateNav();
+    renderView();
+    updateFilterBadge();
+    window.scrollTo(0, 0);
+  });
+
   document.getElementById('sort-select').addEventListener('change', (e) => {
     activeSort = e.target.value;
     expandedTitle = null;
@@ -504,7 +530,7 @@ function renderShowtimeRows(showings, groupKey) {
         }
       });
       if (hasMore) {
-        html += `<button class="time-more" onclick="this.parentElement.classList.add('show-all');this.remove()">+${fmtTimes.length - MAX_VISIBLE} more</button>`;
+        html += `<button class="time-more" onclick="event.preventDefault();event.stopPropagation();var p=this.parentElement;this.style.display='none';setTimeout(function(){p.classList.add('show-all')},200)">+${fmtTimes.length - MAX_VISIBLE} more</button>`;
       }
       html += '</span></div>';
     });

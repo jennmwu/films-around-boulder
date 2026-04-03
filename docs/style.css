@@ -26,6 +26,7 @@ body {
 .hidden { display: none !important; }
 
 /* ===================== MARQUEE ===================== */
+.marquee-link { text-decoration: none; display: block; cursor: pointer; }
 .marquee-scene { background: #050505; padding: 24px 16px 0; display: flex; justify-content: center; }
 .marquee-frame { width: 100%; max-width: 520px; background: #111; padding: 16px; position: relative; border: 1px solid #222; }
 .bulb-border { position: absolute; inset: 0; pointer-events: none; }
