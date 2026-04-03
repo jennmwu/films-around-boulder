@@ -241,6 +241,9 @@ footer { max-width: 900px; margin: 60px auto 0; padding: 24px 20px 32px; border-
   .board-line.small { font-size: 9px; letter-spacing: 3px; }
   header { padding: 0 12px; }
   main { padding: 0 12px; }
+  .toggle-btn { padding: 5px 10px; font-size: 10px; letter-spacing: 1px; }
+  .filter-toggle { padding: 5px 8px; font-size: 10px; letter-spacing: 1px; }
+  .sort-select { font-size: 10px; padding: 4px 20px 4px 6px; }
   .poster-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .detail-poster { width: 80px; height: 120px; }
   .detail-title { font-size: 16px; }
