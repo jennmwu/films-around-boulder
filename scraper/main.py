@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 # Add scraper dir to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from theaters import ifs, cinemark, landmark, alamo, dairy, sie, biff
+from theaters import ifs, cinemark, landmark, alamo, dairy, sie, biff, regal, amc
 import tmdb
 import mdblist
 
@@ -24,8 +24,8 @@ SCRAPERS = [
     ("Dairy", dairy.scrape),
     ("SIE", sie.scrape),
     ("BIFF", biff.scrape),
-    # Future scrapers:
-    # ("AMC", amc.scrape),
+    ("Regal", regal.scrape),
+    # ("AMC", amc.scrape),  # TODO: slow Playwright scraper, needs optimization
 ]
 
 OUTPUT_PATH = os.path.join(
@@ -142,6 +142,7 @@ INDIE_VENUES = {
 
 WIDE_VENUES = {
     "Cinemark Boulder", "Alamo Sloans Lake", "Alamo Westminster",
+    "Regal Longmont", "AMC Flatiron Crossing", "AMC Westminster",
 }
 
 

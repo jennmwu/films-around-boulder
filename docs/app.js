@@ -23,6 +23,9 @@ const THEATER_URLS = {
   'Cinemark Boulder': 'https://www.cinemark.com/theatres/co-boulder/century-boulder',
   'Dairy Arts Center': 'https://thedairy.org/cinema/',
   'BIFF': 'https://biff1.com',
+  'Regal Longmont': 'https://www.regmovies.com/theatres/regal-village-at-the-peaks-rpx-1673',
+  'AMC Flatiron Crossing': 'https://www.amctheatres.com/movie-theatres/denver/amc-flatiron-crossing-14',
+  'AMC Westminster': 'https://www.amctheatres.com/movie-theatres/denver/amc-westminster-promenade-24',
 };
 
 // Distance from downtown Boulder (miles, approximate driving)
@@ -30,10 +33,13 @@ const THEATER_DISTANCE = {
   'Boulder IFS': 0,
   'Dairy Arts Center': 0.5,
   'Cinemark Boulder': 1,
+  'AMC Flatiron Crossing': 13,
+  'Regal Longmont': 15,
+  'Alamo Westminster': 18,
+  'AMC Westminster': 20,
   'Landmark Mayan': 28,
   'SIE FilmCenter': 30,
   'Alamo Sloans Lake': 35,
-  'Alamo Westminster': 18,
 };
 
 const SORT_OPTIONS = [
@@ -679,6 +685,8 @@ function shortName(theater) {
     'Boulder IFS': 'IFS', 'SIE FilmCenter': 'SIE', 'Landmark Mayan': 'Mayan',
     'Alamo Sloans Lake': 'Alamo SL', 'Alamo Westminster': 'Alamo West',
     'Cinemark Boulder': 'Cinemark', 'Dairy Arts Center': 'Dairy',
+    'Regal Longmont': 'Regal', 'AMC Flatiron Crossing': 'AMC Flat',
+    'AMC Westminster': 'AMC West',
     'BIFF': 'BIFF', 'BIFF @ CEN': 'BIFF CEN', 'BIFF @ BT': 'BIFF BT',
     'BIFF @ FC': 'BIFF FC', 'BIFF @ GC': 'BIFF GC', 'BIFF @ LONG': 'BIFF Long',
     'BIFF @ Rembrandt Yard': 'BIFF RY'

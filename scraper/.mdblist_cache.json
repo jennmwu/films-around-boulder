@@ -588,5 +588,41 @@
     "rt": 95,
     "letterboxd": 3.4,
     "metacritic": 80
+  },
+  "tt34705112": {
+    "imdb": null,
+    "rt": null,
+    "letterboxd": null,
+    "metacritic": null
+  },
+  "tt30413898": {
+    "imdb": null,
+    "rt": null,
+    "letterboxd": null,
+    "metacritic": null
+  },
+  "tt33365660": {
+    "imdb": 4.9,
+    "rt": 72,
+    "letterboxd": 3.0,
+    "metacritic": 63
+  },
+  "tt36986222": {
+    "imdb": 8.6,
+    "rt": null,
+    "letterboxd": null,
+    "metacritic": null
+  },
+  "tt1121948": {
+    "imdb": 5.7,
+    "rt": 59,
+    "letterboxd": 2.7,
+    "metacritic": 60
+  },
+  "tt34967068": {
+    "imdb": 5.7,
+    "rt": 86,
+    "letterboxd": 3.1,
+    "metacritic": 43
   }
 }

@@ -1941,5 +1941,137 @@
     "runtime": 80,
     "director": "William Greaves",
     "imdb_id": "tt12546316"
+  },
+  "bts world tour 'arirang' in goyang: live viewing": {
+    "id": 1640663,
+    "title": "BTS World Tour 'Arirang' in Goyang: Live Viewing",
+    "overview": "Pop Royalty BTS returns to the global stage with their highly anticipated world tour, marking their first large-scale tour in approximately four years. Spanning 34 cities across the world with a total of 82 shows, the tour opens with landmark concerts in Goyang, South Korea, and Tokyo, Japan, marking a new record for the most tour dates by a K-pop artist.",
+    "poster_path": "/uA9TlWdNBkCWy06k4uUWyI9iRHU.jpg",
+    "release_date": "2026-04-11",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 0.4855,
+    "genres": "Music"
+  },
+  "busboys": {
+    "id": 1391074,
+    "title": "Busboys",
+    "overview": "A couple of border town friends think waiting tables will fix everything, but they're mistaken.",
+    "poster_path": "/z7aBU98usPaaFymldN6IcYRsHZr.jpg",
+    "release_date": "2026-04-17",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 1.8969,
+    "genres": "Comedy"
+  },
+  "and then there were none": {
+    "id": 1374784,
+    "title": "And Then There Were None",
+    "overview": "The first Czech feature-length brickfilm - that is, a film made using stop-motion animation with Lego bricks. It is a non-commercial film based on Agatha Christie\u2019s most popular novel. Creator Luk\u00e1\u0161 Tuzar worked on the film for seven years. Ten people who seem different at first glance are invited to Black Island, but they do have something in common. When they arrive on the island, the mysterious host is nowhere to be found. On the first evening, the guests learn the real reason for the invitation. Remember, sins always come to light.",
+    "poster_path": "/oDaUu5ttWNQQLJH3FVaYhm8Kywl.jpg",
+    "release_date": "2024-10-20",
+    "release_year": 2024,
+    "vote_average": 0.0,
+    "popularity": 0.2928,
+    "genres": "Crime, Animation, Thriller"
+  },
+  "dacoit: a love story": {
+    "id": 1220522,
+    "title": "Dacoit",
+    "overview": "A man is convicted for a crime he didn't commit owing to a betrayal by his better half. He hunts her down seeking vengeance, as their stories intertwine with a series of robberies.",
+    "poster_path": "/7N7uRi2bJ5l8IUYMY0avwJhg05o.jpg",
+    "release_date": "2026-04-10",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 2.1584,
+    "genres": "Action, Romance, Thriller"
+  },
+  "faces of death - early access": {},
+  "by design": {
+    "id": 1355496,
+    "title": "By Design",
+    "overview": "A woman swaps bodies with a chair, and everyone likes her better as a chair.",
+    "poster_path": "/vsxdWuHSR69euI3O3qjlJyudNUg.jpg",
+    "release_date": "2026-02-13",
+    "release_year": 2026,
+    "vote_average": 4.333,
+    "popularity": 1.6933,
+    "genres": "Comedy, Fantasy, Romance"
+  },
+  "hoppers (open cap/eng sub)": {},
+  "monday mystery movie (04/06)": {},
+  "monday mystery movie (04/13)": {},
+  "newport & the great folk dream": {
+    "id": 1517156,
+    "title": "Newport and the Great Folk Dream",
+    "overview": "Powerful music leaps from the air and can change the actual world. At the Newport Folk Festivals in the early 1960s, the molecules were electric with rebellion and democracy, with anger and hope. Musicians drove that change \u2014 Bob Dylan, Joan Baez and Pete Seeger but also banjo players from coal country, remote Georgia gospel artists, rural Canadian fishermen, and the opportunities created for the urban kids to mingle with those they\u2019d not ordinarily encounter.",
+    "poster_path": "/sz4fxbgf5qRvnRLQ5hJIPCXA6EY.jpg",
+    "release_date": "2025-09-05",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.3646,
+    "genres": "Documentary, Music"
+  },
+  "over your dead body - early access": {},
+  "project hail mary (open cap/eng sub)": {},
+  "raakaasaa": {},
+  "the drama (open cap/eng sub)": {},
+  "the killer": {
+    "id": 970347,
+    "title": "The Killer",
+    "overview": "Zee is a feared contract killer known as \"the Queen of the Dead,\" but when she refuses to murder a young blind woman, she finds herself hunted both by criminal colleagues and a determined police detective.",
+    "poster_path": "/6PCnxKZZIVRanWb710pNpYVkCSw.jpg",
+    "release_date": "2024-08-22",
+    "release_year": 2024,
+    "vote_average": 6.248,
+    "popularity": 3.9737,
+    "genres": "Action, Thriller, Crime"
+  },
+  "the super mario galaxy movie (open cap/eng sub)": {},
+  "touch me": {
+    "id": 1400763,
+    "title": "Touch Me",
+    "overview": "Two codependent best friends become addicted to the heroin-like touch of an alien narcissist who may or may not be trying to take over the world.",
+    "poster_path": "/drcloenCH7ZautM7hnd9r9WScNV.jpg",
+    "release_date": "2026-03-20",
+    "release_year": 2026,
+    "vote_average": 6.0,
+    "popularity": 4.0627,
+    "genres": "Horror, Sci-Fi, Comedy"
+  },
+  "_detail_970347": {
+    "runtime": 126,
+    "director": "John Woo",
+    "imdb_id": "tt1121948"
+  },
+  "_detail_1220522": {
+    "runtime": 0,
+    "director": "Shaneil Deo",
+    "imdb_id": "tt30413898"
+  },
+  "_detail_1517156": {
+    "runtime": 99,
+    "director": "Robert Gordon",
+    "imdb_id": "tt36986222"
+  },
+  "_detail_1355496": {
+    "runtime": 91,
+    "director": "Amanda Kramer",
+    "imdb_id": "tt33365660"
+  },
+  "_detail_1374784": {
+    "runtime": 118,
+    "director": "Luk\u00e1\u0161 Tuzar",
+    "imdb_id": null
+  },
+  "_detail_1391074": {
+    "runtime": 0,
+    "director": "Jonah Feingold",
+    "imdb_id": "tt34705112"
+  },
+  "_detail_1400763": {
+    "runtime": 100,
+    "director": "Addison Heimann",
+    "imdb_id": "tt34967068"
   }
 }
