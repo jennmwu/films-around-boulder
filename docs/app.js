@@ -25,12 +25,30 @@ const THEATER_URLS = {
   'BIFF': 'https://biff1.com',
 };
 
+// Distance from downtown Boulder (miles, approximate driving)
+const THEATER_DISTANCE = {
+  'Boulder IFS': 0,
+  'Dairy Arts Center': 0.5,
+  'Cinemark Boulder': 1,
+  'Landmark Mayan': 28,
+  'SIE FilmCenter': 30,
+  'Alamo Sloans Lake': 35,
+  'Alamo Westminster': 18,
+};
+
+const SORT_OPTIONS = [
+  { key: 'recommended', label: 'Recommended' },
+  { key: 'alpha', label: 'A-Z' },
+  { key: 'year', label: 'Newest' },
+];
+
 let data = null;
 let siteConfig = null;
 let activeView = 'date';
 let activeFilters = null;
 let activeCategories = null;
 let activeDate = null;
+let activeSort = 'recommended';
 let drawerOpen = false;
 let expandedTitle = null;
 
@@ -69,6 +87,12 @@ async function init() {
   });
 
   renderBanner();
+
+  document.getElementById('sort-select').addEventListener('change', (e) => {
+    activeSort = e.target.value;
+    expandedTitle = null;
+    renderView();
+  });
 
   document.querySelectorAll('.toggle-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -231,6 +255,42 @@ function getFilteredMovies() {
   });
 }
 
+function sortTitles(titles, byTitle) {
+  if (activeSort === 'alpha') {
+    return titles.sort();
+  }
+  if (activeSort === 'year') {
+    return titles.sort((a, b) => {
+      const ya = byTitle[a][0]?.year || 0;
+      const yb = byTitle[b][0]?.year || 0;
+      return yb - ya || a.localeCompare(b);
+    });
+  }
+  // Recommended: prioritize indie/classic/back-in-theaters + higher Letterboxd, then new releases
+  return titles.sort((a, b) => {
+    const sa = getRecommendedScore(byTitle[a]);
+    const sb = getRecommendedScore(byTitle[b]);
+    return sb - sa || a.localeCompare(b);
+  });
+}
+
+function getRecommendedScore(showings) {
+  const s = showings[0];
+  const cats = s.categories || [];
+  let score = 0;
+  // Boost non-new-release categories
+  if (cats.includes('Independent')) score += 30;
+  if (cats.includes('Classic')) score += 25;
+  if (cats.includes('Back in Theaters')) score += 20;
+  if (cats.includes('Festival')) score += 35;
+  // Letterboxd rating boost (0-5 scale, multiply by 10)
+  if (s.letterboxd_rating) score += s.letterboxd_rating * 10;
+  else if (s.imdb_rating) score += s.imdb_rating * 4;
+  // Small boost for having a poster (enriched = better data)
+  if (s.poster_url) score += 5;
+  return score;
+}
+
 function refreshAndRender() {
   const filtered = getFilteredMovies();
   const dates = [...new Set(filtered.map(m => m.date))].sort();
@@ -289,8 +349,9 @@ function updateExpandState(main) {
 
   targetItem.classList.add('expanded');
 
-  // Get showings for this title
-  const filtered = getFilteredMovies();
+  // Get showings for this title (scoped to active date in date view)
+  let filtered = getFilteredMovies();
+  if (activeView === 'date') filtered = filtered.filter(m => m.date === activeDate);
   const showings = filtered.filter(m => m.title === expandedTitle);
   if (showings.length === 0) return;
 
@@ -391,19 +452,40 @@ function renderShowtimeRows(showings, groupKey) {
   Object.keys(grouped).sort().forEach(key => {
     const times = grouped[key];
     const label = groupKey === 'theater' ? esc(key) : formatShortDate(key);
-    html += '<div class="showtime-row">';
-    html += `<span class="${groupKey === 'theater' ? 'theater-name' : 'schedule-date'}">${label}</span>`;
-    html += '<span class="times">';
+
+    // Group by format within this venue/date
+    const byFormat = {};
     times.forEach(t => {
-      const past = isTimePast(t.date, t.time);
-      if (past) {
-        html += `<span class="time-chip time-past">${esc(t.time)}</span>`;
-      } else {
-        html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip">${esc(t.time)}</a>`;
-      }
-      if (t.format && t.format !== 'Standard') html += `<span class="tag tag-format">${esc(t.format)}</span>`;
+      const fmt = t.format || 'Standard';
+      if (!byFormat[fmt]) byFormat[fmt] = [];
+      byFormat[fmt].push(t);
     });
-    html += '</span></div>';
+
+    Object.keys(byFormat).sort().forEach(fmt => {
+      const fmtTimes = byFormat[fmt];
+      const MAX_VISIBLE = 8;
+      const hasMore = fmtTimes.length > MAX_VISIBLE;
+      const uid = `st-${key}-${fmt}`.replace(/\W/g, '-');
+
+      html += '<div class="showtime-row">';
+      html += `<span class="${groupKey === 'theater' ? 'theater-name' : 'schedule-date'}">${label}`;
+      if (fmt !== 'Standard') html += ` <span class="tag tag-format">${esc(fmt)}</span>`;
+      html += '</span>';
+      html += `<span class="times" id="${uid}">`;
+      fmtTimes.forEach((t, i) => {
+        const hiddenClass = (hasMore && i >= MAX_VISIBLE) ? ' time-hidden' : '';
+        const past = isTimePast(t.date, t.time);
+        if (past) {
+          html += `<span class="time-chip time-past${hiddenClass}">${esc(t.time)}</span>`;
+        } else {
+          html += `<a href="${esc(t.url)}" target="_blank" rel="noopener" class="time-chip${hiddenClass}">${esc(t.time)}</a>`;
+        }
+      });
+      if (hasMore) {
+        html += `<button class="time-more" onclick="this.parentElement.classList.add('show-all');this.remove()">+${fmtTimes.length - MAX_VISIBLE} more</button>`;
+      }
+      html += '</span></div>';
+    });
   });
   return html;
 }
@@ -412,7 +494,7 @@ function renderShowtimeRows(showings, groupKey) {
 
 function renderByDate(container, movies) {
   const byTitle = groupBy(movies, 'title');
-  const titles = Object.keys(byTitle).sort();
+  const titles = sortTitles(Object.keys(byTitle), byTitle);
 
   let html = `<div class="date-heading">${formatDayHeading(activeDate)}</div>`;
   html += '<div class="poster-grid">';
@@ -425,7 +507,7 @@ function renderByDate(container, movies) {
     html += `<div class="grid-item ${isExpanded ? 'expanded' : ''}" data-title="${esc(title)}">`;
     html += '<div class="grid-poster-wrap">';
     if (poster) html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
-    else html += `<div class="grid-poster grid-poster-placeholder">${esc(title.slice(0, 2).toUpperCase())}</div>`;
+    else html += `<div class="grid-poster grid-poster-placeholder"><span>${esc(title)}</span></div>`;
     html += '</div>';
     html += `<div class="grid-title">${esc(title)}</div>`;
     if (year) html += `<div class="grid-meta">${year}</div>`;
@@ -445,10 +527,17 @@ function renderByLocation(container, movies) {
   const byTheater = groupBy(movies, 'theater');
   let html = '';
 
-  Object.keys(byTheater).sort().forEach(theater => {
+  // Sort theaters by distance from Boulder
+  const theaters = Object.keys(byTheater).sort((a, b) => {
+    const da = THEATER_DISTANCE[a] ?? (a.startsWith('BIFF') ? 0 : 50);
+    const db = THEATER_DISTANCE[b] ?? (b.startsWith('BIFF') ? 0 : 50);
+    return da - db;
+  });
+
+  theaters.forEach(theater => {
     const theaterMovies = byTheater[theater];
     const byTitle = groupBy(theaterMovies, 'title');
-    const titles = Object.keys(byTitle).sort();
+    const titles = sortTitles(Object.keys(byTitle), byTitle);
     const url = getTheaterUrl(theater);
 
     html += '<div class="location-section">';
@@ -469,7 +558,7 @@ function renderByLocation(container, movies) {
       html += `<div class="lane-item ${isExpanded ? 'expanded' : ''}" data-title="${esc(title)}">`;
       html += '<div class="grid-poster-wrap">';
       if (poster) html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
-      else html += `<div class="grid-poster grid-poster-placeholder">${esc(title.slice(0, 2).toUpperCase())}</div>`;
+      else html += `<div class="grid-poster grid-poster-placeholder"><span>${esc(title)}</span></div>`;
       html += '</div>';
       html += `<div class="grid-title">${esc(title)}</div>`;
       if (year) html += `<div class="grid-meta">${year}</div>`;

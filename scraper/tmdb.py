@@ -93,10 +93,20 @@ def normalize_title(title):
     t = re.sub(r"^Staff Pick:\s*", "", t, flags=re.IGNORECASE)
     t = re.sub(r"^Sie/Saw:\s*", "", t, flags=re.IGNORECASE)
     t = re.sub(r"^Members\s+Sneak\s+Preview\s*[-\u2013]\s*", "", t, flags=re.IGNORECASE)
+    # Remove screening series prefixes
+    t = re.sub(r"^Friday\s+Night\s+Weird:\s*", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"^Cinema\s+Classics\s+with\s+[\w\s]+:\s*", "", t, flags=re.IGNORECASE)
+    t = re.sub(r"^Hong\s+Kong\s+Cinema\s+Classic[s]?\s*[-:]\s*", "", t, flags=re.IGNORECASE)
+    # Remove language/subtitle notes in parens
+    t = re.sub(r"\s*\([^)]*(?:Subtitles?|Subtitled|with\s+English)[^)]*\)\s*$", "", t, flags=re.IGNORECASE)
     # Remove format suffixes like "(Subtitled)" or "(IMAX)"
     t = re.sub(r"\s*\((?:Subtitled|IMAX|3D|Dolby|35mm|70mm)\)\s*$", "", t, flags=re.IGNORECASE)
     # Remove "3D" suffix
     t = re.sub(r"\s+3D\s*$", "", t, flags=re.IGNORECASE)
+    # Remove trailing " - " with screening info
+    t = re.sub(r"\s*[-\u2013]\s*(?:Film Screening|A film by).*$", "", t, flags=re.IGNORECASE)
+    # Remove "| Hong Kong Cinema Classic" etc
+    t = re.sub(r"\s*\|\s*(?:Hong Kong|Cinema|Oscars?).*$", "", t, flags=re.IGNORECASE)
     return t.strip()
 
 
