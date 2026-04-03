@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Mockups - Films on the Front Range</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Bungee&family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&family=Playfair+Display:wght@400;700;900&family=Anton&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    body { background: #0a0a0a; color: #e0e0e0; font-family: 'Space Grotesk', sans-serif; padding: 40px 20px; }
+    .mockup-label { font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: #666; margin-bottom: 12px; margin-top: 60px; }
+    .mockup-label:first-child { margin-top: 0; }
+    .mockup { display: flex; justify-content: center; padding: 30px; }
+
+    /* ===== Option A: Marquee with stacked type ===== */
+    .logo-a { text-align: center; padding: 20px 40px 16px; position: relative; border: 1px solid #222; background: #111; }
+    .logo-a .bulb-row { display: flex; justify-content: space-between; padding: 0 4px; margin-bottom: 8px; }
+    .logo-a .bulb-row.bottom { margin-bottom: 0; margin-top: 8px; }
+    .logo-a .bulb { width: 6px; height: 6px; border-radius: 50%; background: #FFA400; box-shadow: 0 0 4px rgba(255,164,0,0.5); }
+    .logo-a .hero { font-family: 'Bungee Shade', cursive; font-size: 52px; color: #FFA400; letter-spacing: 6px; line-height: 1; }
+    .logo-a .sub { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 6px; color: #f5f5f0; margin-top: 4px; }
+
+    /* ===== Option B: Minimal stacked ===== */
+    .logo-b { text-align: center; }
+    .logo-b .top { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 8px; color: #888; }
+    .logo-b .hero { font-family: 'Bebas Neue', sans-serif; font-size: 72px; color: #f5f5f0; letter-spacing: 4px; line-height: 0.9; }
+    .logo-b .hero span { color: #FFA400; }
+    .logo-b .bottom { font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 8px; color: #888; margin-top: 4px; }
+
+    /* ===== Option C: Horizontal with divider ===== */
+    .logo-c { display: flex; align-items: center; gap: 16px; }
+    .logo-c .icon { font-family: 'Bungee Shade', cursive; font-size: 44px; color: #FFA400; line-height: 1; }
+    .logo-c .divider { width: 2px; height: 44px; background: #333; }
+    .logo-c .text { display: flex; flex-direction: column; }
+    .logo-c .line1 { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; color: #f5f5f0; line-height: 1.1; }
+    .logo-c .line2 { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 900; text-transform: uppercase; letter-spacing: 3px; color: #FFA400; line-height: 1.1; }
+
+    /* ===== Option D: Retro ticket stub ===== */
+    .logo-d { text-align: center; border: 2px solid #FFA400; padding: 12px 32px 10px; position: relative; }
+    .logo-d::before, .logo-d::after { content: ''; position: absolute; top: 50%; width: 16px; height: 16px; background: #0a0a0a; border-radius: 50%; border: 2px solid #FFA400; transform: translateY(-50%); }
+    .logo-d::before { left: -10px; }
+    .logo-d::after { right: -10px; }
+    .logo-d .hero { font-family: 'Anton', sans-serif; font-size: 36px; text-transform: uppercase; color: #f5f5f0; letter-spacing: 3px; line-height: 1; }
+    .logo-d .hero span { color: #FFA400; }
+    .logo-d .sub { font-family: 'Space Grotesk', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #888; margin-top: 4px; }
+
+    /* ===== Option E: Big & bold, two-line ===== */
+    .logo-e { text-align: center; }
+    .logo-e .line1 { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #f5f5f0; line-height: 1; }
+    .logo-e .line2 { font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 900; text-transform: uppercase; letter-spacing: 4px; color: #FFA400; line-height: 1; margin-top: 2px; }
+    .logo-e .tagline { font-family: 'Space Grotesk', sans-serif; font-size: 11px; letter-spacing: 5px; text-transform: uppercase; color: #666; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="mockup-label">A / Marquee (closest to current FAB style)</div>
+  <div class="mockup">
+    <div class="logo-a">
+      <div class="bulb-row">
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+      </div>
+      <div class="hero">FOFR</div>
+      <div class="sub">Films on the Front Range</div>
+      <div class="bulb-row bottom">
+        <span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span><span class="bulb"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-label">B / Tall type, "Front Range" highlighted</div>
+  <div class="mockup">
+    <div class="logo-b">
+      <div class="top">Films on the</div>
+      <div class="hero">FRONT <span>RANGE</span></div>
+      <div class="bottom">Boulder &bull; Denver &bull; Front Range</div>
+    </div>
+  </div>
+
+  <div class="mockup-label">C / Horizontal lockup with icon</div>
+  <div class="mockup">
+    <div class="logo-c">
+      <div class="icon">FR</div>
+      <div class="divider"></div>
+      <div class="text">
+        <span class="line1">Films on the</span>
+        <span class="line2">Front Range</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mockup-label">D / Ticket stub</div>
+  <div class="mockup">
+    <div class="logo-d">
+      <div class="hero">Films on the <span>Front Range</span></div>
+      <div class="sub">What's showing in Boulder &bull; Denver &bull; the Front Range</div>
+    </div>
+  </div>
+
+  <div class="mockup-label">E / Big stacked, no frame</div>
+  <div class="mockup">
+    <div class="logo-e">
+      <div class="line1">Films on the</div>
+      <div class="line2">Front Range</div>
+      <div class="tagline">What's playing across Boulder &amp; Denver</div>
+    </div>
+  </div>
+
+</body>
+</html>

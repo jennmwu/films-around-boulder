@@ -352,9 +352,9 @@ function renderDetailPanel(showings, groupKey) {
   const hasRatings = s.imdb_rating || s.rt_score || s.letterboxd_rating;
   if (hasRatings) {
     html += '<div class="detail-ratings">';
-    if (s.imdb_rating) html += `<span class="rating-pill rating-imdb"><svg class="rating-logo" viewBox="0 0 64 32" fill="none"><rect width="64" height="32" rx="4" fill="#f5c518"/><text x="32" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="18" fill="#000">IMDb</text></svg>${s.imdb_rating}</span>`;
-    if (s.rt_score) html += `<span class="rating-pill rating-rt"><svg class="rating-logo" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#fa503c"/><text x="12" y="17" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="12" fill="#fff">RT</text></svg>${s.rt_score}%</span>`;
-    if (s.letterboxd_rating) html += `<span class="rating-pill rating-lb"><svg class="rating-logo" viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="5" fill="#00e054"/><circle cx="12" cy="12" r="5" fill="#40bcf4"/><circle cx="17.5" cy="12" r="5" fill="#ee7000"/></svg>${s.letterboxd_rating}</span>`;
+    if (s.imdb_rating) html += `<span class="rating-pill rating-imdb"><img class="rating-logo" src="logos/imdb.svg" alt="IMDb">${s.imdb_rating}</span>`;
+    if (s.rt_score) html += `<span class="rating-pill rating-rt"><img class="rating-logo rating-logo-square" src="logos/rt.svg" alt="RT">${s.rt_score}%</span>`;
+    if (s.letterboxd_rating) html += `<span class="rating-pill rating-lb"><img class="rating-logo rating-logo-square" src="logos/letterboxd.svg" alt="Letterboxd">${s.letterboxd_rating}</span>`;
     html += '</div>';
   }
 
