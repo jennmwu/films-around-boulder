@@ -21,7 +21,9 @@ HEADERS = {
 }
 
 # Skip non-movie presentations
-SKIP_TYPES = {"party", "brunch", "feast", "karaoke", "singalong", "trivia", "bingo"}
+# Note: "party" and "singalong" intentionally excluded — Alamo Movie Parties and singalong
+# screenings are legitimate film events and should appear on FAB.
+SKIP_TYPES = {"brunch", "feast", "karaoke", "trivia", "bingo"}
 
 
 def scrape():
@@ -158,6 +160,12 @@ def _detect_special(pres):
         return "Special Screening"
     if "movie-party" in attrs_str:
         return "Movie Party"
+    if "costume" in attrs_str:
+        return "Costume Screening"
+    if "singalong" in attrs_str or "sing-along" in attrs_str:
+        return "Singalong"
+    if "alamo-exclusive" in attrs_str:
+        return "Alamo Exclusive"
     if "brunch" in attrs_str:
         return "Brunch"
     return None

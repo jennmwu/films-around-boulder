@@ -367,7 +367,8 @@ function getSpecialBadge(m) {
   if (special.includes('q&a') || special.includes('filmmaker')) return { cls: 'sp-qa', label: 'Q&A' };
   if (
     special.includes('anniversary') || special.includes('special screening') ||
-    special.includes('movie party') || special.includes('live')
+    special.includes('movie party') || special.includes('live') ||
+    special.includes('costume') || special.includes('singalong')
   ) return { cls: 'sp-event', label: 'Event' };
   return null;
 }
