@@ -2073,5 +2073,726 @@
     "runtime": 100,
     "director": "Addison Heimann",
     "imdb_id": "tt34967068"
+  },
+  "$positions": {
+    "id": 1303498,
+    "title": "$POSITIONS",
+    "overview": "Blue-collar Kansan Mike Alvarado attempts to save his family from the throes of poverty by investing their savings into speculative cryptocurrencies. However, as his investment strategy decays into a full-blown gambling addiction, he sends his life into a nightmarish anxiety-inducing downward spiral, compromising his relationships with his girlfriend, his mentally disabled brother, and his recovering junkie cousin.",
+    "poster_path": "/aCO1R97tKCeeYWGGGtja2nEV3GI.jpg",
+    "release_date": "2025-03-08",
+    "release_year": 2025,
+    "vote_average": 8.3,
+    "popularity": 0.4138,
+    "genres": "Comedy, Thriller"
+  },
+  "a mighty wind": {
+    "id": 13370,
+    "title": "A Mighty Wind",
+    "overview": "Three eclectic, never-quite-famous folk bands come together for the first time in decades following the death of their manager to put on an reunion concert in his honor, at the request of his son.",
+    "poster_path": "/5wUYwAD75BxtJ0Mp4da6XzHIFex.jpg",
+    "release_date": "2003-04-16",
+    "release_year": 2003,
+    "vote_average": 6.768,
+    "popularity": 2.3914,
+    "genres": "Comedy, Music"
+  },
+  "after hours / adventures in babysitting double feature": {},
+  "april": {
+    "id": 1057823,
+    "title": "April",
+    "overview": "Set to a vibrant landscape, 'April' follows the emotional up-and-down journey of a full-of-life high school girl, named April (played by Celine Alva), as she navigates change, friendships, and ultimately a decision that could permanently alter her life.",
+    "poster_path": "/bZ5Td5X5nisD21ew9HOGRqqcxyR.jpg",
+    "release_date": "2025-09-05",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.5758,
+    "genres": "Drama"
+  },
+  "april cinema club: epic": {},
+  "attack on titan: the last attack": {
+    "id": 1333100,
+    "title": "Attack on Titan: THE LAST ATTACK",
+    "overview": "A colossal-sized omnibus film bringing together the last two episodes of Attack on Titan in the franchise's first-ever theatrical experience. After venturing beyond the walls and separated from his comrades, Eren finds himself inspired by this new truth and plots the \"Rumbling,\" a terrifying plan to eradicate every living thing in the world. With the fate of the world hanging in the balance, a motley crew of Eren's former comrades and enemies scramble to halt his deadly mission. The only question is, can they stop him?",
+    "poster_path": "/wgwldDDlTDDMrluOMkpSA8lyKjv.jpg",
+    "release_date": "2024-03-20",
+    "release_year": 2024,
+    "vote_average": 8.728,
+    "popularity": 7.2444,
+    "genres": "Animation, Action, Adventure, Drama"
+  },
+  "best of the fests | april 27 \u2013 28, 2026": {},
+  "blazing saddles": {
+    "id": 11072,
+    "title": "Blazing Saddles",
+    "overview": "A town\u2014where everyone seems to be named Johnson\u2014stands in the way of the railroad. In order to grab their land, robber baron Hedley Lamarr sends his henchmen to make life in the town unbearable. After the sheriff is killed, the town demands a new sheriff from the Governor, so Hedley convinces him to send the town the first black sheriff in the west.",
+    "poster_path": "/xDSrLJcHJpMXISPdl6sPkS5Xbu6.jpg",
+    "release_date": "1974-02-07",
+    "release_year": 1974,
+    "vote_average": 7.2,
+    "popularity": 4.4739,
+    "genres": "Western, Comedy"
+  },
+  "boys go to jupiter": {
+    "id": 1235137,
+    "title": "Boys Go to Jupiter",
+    "overview": "A teenager in suburban Florida desperately hustles to make $5,000 in this dreamy and surreal animated coming-of-age story.",
+    "poster_path": "/3dTnNYq0TZYkTLqRXgHz3OBxcFA.jpg",
+    "release_date": "2025-06-26",
+    "release_year": 2025,
+    "vote_average": 7.2,
+    "popularity": 1.1082,
+    "genres": "Animation, Comedy, Drama, Sci-Fi, Music"
+  },
+  "bridesmaids:": {
+    "id": 55721,
+    "title": "Bridesmaids",
+    "overview": "Annie's life is a mess. But when she finds out her lifetime best friend is engaged, she simply must serve as Lillian's maid of honor. Though lovelorn and broke, Annie bluffs her way through the expensive and bizarre rituals. With one chance to get it perfect, she\u2019ll show Lillian and her bridesmaids just how far you\u2019ll go for someone you love.",
+    "poster_path": "/gJtA7hYsBMQ7EM3sPBMUdBfU7a0.jpg",
+    "release_date": "2011-05-13",
+    "release_year": 2011,
+    "vote_average": 6.5,
+    "popularity": 7.4904,
+    "genres": "Comedy, Romance"
+  },
+  "candyman": {
+    "id": 565028,
+    "title": "Candyman",
+    "overview": "A Chicago artist's sanity starts to unravel, unleashing a terrifying wave of violence when he begins to explore the macabre history of the Candyman.",
+    "poster_path": "/qeV15PpR8jFJA9TF9JPXIoqEgp1.jpg",
+    "release_date": "2021-08-25",
+    "release_year": 2021,
+    "vote_average": 6.0,
+    "popularity": 3.2912,
+    "genres": "Horror, Thriller"
+  },
+  "cinema youth advisory board presents: everything everywhere all at once": {},
+  "classics with jeffrey kash: hotel": {},
+  "c\u00e9line and julie go boating": {
+    "id": 27019,
+    "title": "C\u00e9line and Julie Go Boating",
+    "overview": "Julie, a daydreaming librarian, meets C\u00e9line, an enigmatic magician, and together they become the heroines of a time-warping adventure involving a haunted house, psychotropic candy, and a murder-mystery melodrama.",
+    "poster_path": "/ijpehUwH4XFNFm8UcYHpRQVRQUF.jpg",
+    "release_date": "1974-09-18",
+    "release_year": 1974,
+    "vote_average": 6.7,
+    "popularity": 1.4021,
+    "genres": "Comedy, Drama, Fantasy"
+  },
+  "daughter of the light": {
+    "id": 858612,
+    "title": "Daughter of the Light",
+    "overview": "A documentary about Tibetan divorce and orphan issues",
+    "poster_path": "/9PglAvARKrM2ndWGtLLKC31i9bg.jpg",
+    "release_date": "2020-07-29",
+    "release_year": 2020,
+    "vote_average": 0.0,
+    "popularity": 0.0071,
+    "genres": "Documentary"
+  },
+  "eastern anthems": {
+    "id": 1336265,
+    "title": "Eastern Anthems",
+    "overview": "An unfinished film is passed along from one friend to another. The dialog between them is a journey crossed by the swarming of the Great Eastern Brood X of periodical cicadas that prophetically emerge every 17 years in the United States, invoking a reflection of a post-pandemic present and our shared futures.  A road movie composed of a chorus of voices (both human and non-human), the warnings of history, the power of nature and rebirth.",
+    "poster_path": "/a1rgeKhY3mmf4CixTYqVh7hgT6W.jpg",
+    "release_date": "2025-04-03",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.7186,
+    "genres": "Documentary"
+  },
+  "eco-cycle presents earth day kickoff film screening: single use planet": {},
+  "erupcja": {
+    "id": 1337592,
+    "title": "Erupcja",
+    "overview": "While on vacation in Poland, Bethany breaks away from a romantic itinerary planned by her doting boyfriend, Rob, fearing that a marriage proposal is imminent. Reuniting instead with an old friend, Nel, the two women rekindle a uniquely combustible chemistry over the course of a few days in a chaste but burning trust predicated on sapphic synchronicity and a mutual penchant for poetry.",
+    "poster_path": "/1OMiyrpkZvu5YmWbPBtwDQHZsu1.jpg",
+    "release_date": "2026-04-17",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 1.6322,
+    "genres": "Romance, Drama, Comedy"
+  },
+  "f**k my son! + dance freak": {},
+  "face/off": {
+    "id": 754,
+    "title": "Face/Off",
+    "overview": "In order to foil a terrorist plot, an FBI agent undergoes facial transplant surgery and assumes the identity of a criminal mastermind. The plan turns sour when the criminal wakes up prematurely and seeks revenge.",
+    "poster_path": "/69Xzn8UdPbVnmqSChKz2RTpoNfB.jpg",
+    "release_date": "1997-06-27",
+    "release_year": 1997,
+    "vote_average": 7.1,
+    "popularity": 9.6104,
+    "genres": "Action, Crime, Sci-Fi"
+  },
+  "farm hero": {
+    "id": 269254,
+    "title": "The Delano Manongs: Forgotten Heroes Of The United Farm Workers Movement",
+    "overview": "The Delano Manongs tells the story of farm labor organizer Larry Itliong and a group of Filipino farm workers who instigated one of the American farm labor movement\u2019s finest hours \u2013 The Delano Grape Strike of 1965 that brought about the creation of the United Farm Workers Union (UFW). While the movement is known for Cesar Chavez\u2019s leadership and considered a Chicano movement, Filipinos played a pivotal role. Filipino labor organizer, Larry Itliong, a cigar-chomping union veteran, organized a group of 1500 Filipinos to strike against the grape growers of Delano, California, beginning a collaboration between Filipinos, Chicanos and other ethnic workers that would go on for years.",
+    "poster_path": null,
+    "release_date": "2014-05-10",
+    "release_year": 2014,
+    "vote_average": 10.0,
+    "popularity": 0.2509,
+    "genres": "Documentary"
+  },
+  "ferris bueller's day off": {
+    "id": 9377,
+    "title": "Ferris Bueller's Day Off",
+    "overview": "After high school slacker Ferris Bueller successfully fakes an illness in order to skip school for the day, he goes on a series of adventures throughout Chicago with his girlfriend Sloane and best friend Cameron, all the while trying to outwit his wily school principal and fed-up sister.",
+    "poster_path": "/9LTQNCvoLsKXP0LtaKAaYVtRaQL.jpg",
+    "release_date": "1986-06-11",
+    "release_year": 1986,
+    "vote_average": 7.57,
+    "popularity": 5.478,
+    "genres": "Comedy"
+  },
+  "festival cultures shorts program": {},
+  "fight club 4k remaster": {},
+  "nirvanna the band the show the movie": {
+    "id": 1154538,
+    "title": "Nirvanna the Band the Show the Movie",
+    "overview": "When their plan to book a show at the Rivoli goes horribly wrong, Matt and Jay accidentally travel back to the year 2008.",
+    "poster_path": "/sm5TGX8WbnCd9Uo26cLyTxVwA1n.jpg",
+    "release_date": "2026-02-13",
+    "release_year": 2026,
+    "vote_average": 7.641,
+    "popularity": 8.3703,
+    "genres": "Comedy, Sci-Fi, Adventure"
+  },
+  "frogman": {
+    "id": 1139937,
+    "title": "Frogman",
+    "overview": "An amateur filmmaker, struggling to turn his passion into a career, returns with friends to Loveland, Ohio, the location of his first, notorious sighting of the Frogman, determined to obtain irrefutable proof that the cryptid legend exists.",
+    "poster_path": "/hgAHquo8Bt0ub0ru3QLiyrhGltW.jpg",
+    "release_date": "2024-09-26",
+    "release_year": 2024,
+    "vote_average": 5.1,
+    "popularity": 2.4067,
+    "genres": "Horror"
+  },
+  "funny games": {
+    "id": 10234,
+    "title": "Funny Games",
+    "overview": "Two psychotic young men take a mother, father, and son hostage in their vacation cabin and force them to play sadistic \"games\" with one another for their own amusement.",
+    "poster_path": "/vUJxLlRGM6KfXQDeAHqyMyhrI59.jpg",
+    "release_date": "1997-09-11",
+    "release_year": 1997,
+    "vote_average": 7.3,
+    "popularity": 3.0897,
+    "genres": "Drama, Horror, Thriller"
+  },
+  "girl internet show: a kati kelli mixtape": {
+    "id": 950499,
+    "title": "Girl Internet Show: A Kati Kelli Mixtape",
+    "overview": "This feature-length \u201cmixtape\u201d curated by Jane Schoenbrun and Jordan Wippell reintroduces a stunning body of work by Kati Kelli, an outsider YouTube artist who ran \u201cGirl Internet Show\u201d before her passing in 2019.",
+    "poster_path": "/aQ13p7AtM0ATOZ6HC6z3sYe0lAf.jpg",
+    "release_date": "2022-04-10",
+    "release_year": 2022,
+    "vote_average": 2.0,
+    "popularity": 0.0448,
+    "genres": "Documentary, Comedy"
+  },
+  "high anxiety": {
+    "id": 12535,
+    "title": "High Anxiety",
+    "overview": "A psychiatrist with intense acrophobia (fear of heights) goes to work for a mental institution run by doctors who appear to be crazier than their patients, and have secrets that they are willing to commit murder to keep.",
+    "poster_path": "/hCazLbbAveK7Ohc2xT3b3GioNjR.jpg",
+    "release_date": "1977-12-25",
+    "release_year": 1977,
+    "vote_average": 6.4,
+    "popularity": 1.5312,
+    "genres": "Comedy, Mystery, Thriller"
+  },
+  "horseshoe | apr 29-may 3": {},
+  "i swear": {
+    "id": 1317149,
+    "title": "I Swear",
+    "overview": "Diagnosed with Tourette Syndrome at 15, John Davidson navigates his way against the odds through troubled teenage years and into adulthood, finding inspiration in the kindness of others to discover his true purpose in life.",
+    "poster_path": "/vUwyhNWBKkSwK8ELvEeBRwV724h.jpg",
+    "release_date": "2025-09-22",
+    "release_year": 2025,
+    "vote_average": 8.351,
+    "popularity": 16.0251,
+    "genres": "Drama, History"
+  },
+  "iron maiden: burning ambition": {
+    "id": 1642859,
+    "title": "Iron Maiden: Burning Ambition",
+    "overview": "With unprecedented access to the official archives and intimate recollections from the band, both current and past, \u00abIron Maiden: Burning Ambition\u00bb invites fans to experience one of the most iconic journeys in music history.  Spanning five decades, this electrifying documentary charts the band\u2019s rise from the pubs of East London to the world\u2019s biggest stadiums. Featuring exclusive interviews with band members and contributors such as Javier Bardem, Lars Ulrich and Chuck D, as well as all-new animated sequences of the band's legendary mascot, Eddie, the film offers a rare and intimate look at Iron Maiden\u2019s uncompromising vision and unwavering connection with their truly global army of fans.",
+    "poster_path": "/yZqhFJDenLfgF1VygOOCNmAdS1P.jpg",
+    "release_date": "2026-05-07",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 0.7149,
+    "genres": "Documentary, Music"
+  },
+  "jeopardy! interactive": {},
+  "la scala: the force of destiny": {
+    "id": 1563190,
+    "title": "La Scala: The Force of Destiny",
+    "overview": "Legendary opera house, La Scala is more than just a stage\u2014 it\u2019s a dream factory. And this year, over the course of four intensive months, 900 people will work relentlessly to incarnate Verdi\u2019s opera masterpiece, \u2018\u2018The Force of Destiny\u201d.  Under the masterful eyes of director L\u00e9o Muscato, we will follow set designer Federica Parolini, as her sketches evolve into towering architectural marvels crafted by dedicated artisans. In the costume workshop, Silvia Peroni and her team weave magic with fabric and thread through their expert hands. Then, a stellar international cast of virtuosos arrives in Milan, ready to fill La Scala\u2019s hallowed halls with their soaring voices. But with the clock ticking, and expectations going through the roof, tensions unfold like an opera of its own. As Milan holds its breath for the legendary Prima on the 7th of December, the stakes couldn\u2019t be higher. Will they be ready in time for curtain rise?",
+    "poster_path": "/kiKpFTnjPOkm928TdyvuX7ViSE3.jpg",
+    "release_date": "2025-11-02",
+    "release_year": 2025,
+    "vote_average": 8.0,
+    "popularity": 0.2891,
+    "genres": "Documentary, Music"
+  },
+  "labyrinth": {
+    "id": 1409302,
+    "title": "Labyrinth",
+    "overview": "A man decides to skip work as he embarks on an adventure across London.",
+    "poster_path": "/5YiNmBo8ZfEKOR5ttwsuRjduHVc.jpg",
+    "release_date": "2025-01-10",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.0805,
+    "genres": "Drama, Comedy"
+  },
+  "matti da slegare": {
+    "id": 230030,
+    "title": "Fit to Be Untied",
+    "overview": "This documentary was distilled from a 3 1/2-hour television film Nessuno o Tutti, to make the point that many inmates now in mental hospitals could be released without harm to society, and to their advantage.",
+    "poster_path": "/ailWKyUX4MSlVaL0Qzc6581blWQ.jpg",
+    "release_date": "1975-01-13",
+    "release_year": 1975,
+    "vote_average": 8.3,
+    "popularity": 0.3735,
+    "genres": "Documentary, Drama"
+  },
+  "michael": {
+    "id": 936075,
+    "title": "Michael",
+    "overview": "Discover the story of Michael Jackson, one of the most influential artists the world has ever known, and his life beyond the music, tracing his journey from the discovery of his extraordinary talent as the lead of the Jackson Five, to the visionary artist whose creative ambition fueled a relentless pursuit to become the biggest entertainer in the world, highlighting both his life off-stage and some of the most iconic performances from his early solo career.",
+    "poster_path": "/3Qud19bBUrrJAzy0Ilm8gRJlJXP.jpg",
+    "release_date": "2026-04-22",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 19.0099,
+    "genres": "Music, Drama, History"
+  },
+  "mountains on stage summer edition 2026": {},
+  "mystery machine (4/13/2026)": {},
+  "power to the people: john & yoko live in nyc": {
+    "id": 1539299,
+    "title": "Power to the People: John & Yoko Live in NYC",
+    "overview": "John & Yoko/Plastic Ono Band with Elephant's Memory and Special Guests performed these now-legendary sold-out One To One concerts to a combined audience of 40,000 people, raising over $1.5M for children with intellectual and developmental disabilities. They were the only full-length concerts John Lennon (with Yoko Ono) performed after leaving The Beatles.",
+    "poster_path": "/lpq2ezXOSgsB4RncYohs4p1s6gx.jpg",
+    "release_date": "2026-04-10",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 0.4683,
+    "genres": "Music, Documentary"
+  },
+  "reefer madness": {
+    "id": 37833,
+    "title": "Tell Your Children",
+    "overview": "High-school principal Dr. Alfred Carroll relates to an audience of parents that marijuana can have devastating effects on teens: a drug supplier entices several restless teens, Mary and Jimmy Lane, sister and brother, and Bill, Mary's boyfriend, into frequenting a reefer house. Gradually, Bill and Jimmy are drawn into smoking dope, which affects their family lives.",
+    "poster_path": "/6LSqwjw6UsrGWPKsJUNxG3VA25a.jpg",
+    "release_date": "1938-06-15",
+    "release_year": 1938,
+    "vote_average": 4.3,
+    "popularity": 0.9523,
+    "genres": "Drama"
+  },
+  "reveries: the mind prison": {
+    "id": 1458275,
+    "title": "Reveries: The Mind Prison",
+    "overview": "Two mysterious drifters wandering a strange desert find themselves thrown into a journey of self-discovery, traversing a surreal and hostile terrain in search of answers to life\u2019s unanswerable questions. As they spiral deeper into a world of madness, they must discover the meaning of\u2026THE MIND PRISON.",
+    "poster_path": "/4sej31f6qVSJGzWTtvv42XoxgRF.jpg",
+    "release_date": "2025-04-20",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.0541,
+    "genres": "Comedy, Fantasy"
+  },
+  "rocky horror picture show w/ co's elusive ingredient shadowcast": {},
+  "romancing in thin air": {
+    "id": 86409,
+    "title": "Romancing in Thin Air",
+    "overview": "After his new bride dumps him at their wedding reception, a heartbroken actor winds up in the mountains, where he meets and falls in love with a widowed fan.",
+    "poster_path": "/fDnygvxB0IEt8u6H54m1STD2O4h.jpg",
+    "release_date": "2012-02-09",
+    "release_year": 2012,
+    "vote_average": 5.1,
+    "popularity": 1.9916,
+    "genres": "Romance, Drama"
+  },
+  "science on screen\u00ae un-bee-leiveable secrets of bees": {},
+  "she-devil": {
+    "id": 11157,
+    "title": "She-Devil",
+    "overview": "A cunning and resourceful housewife vows revenge on her husband when he begins an affair with a wealthy romance novelist.",
+    "poster_path": "/jWYAXtdYF804aT1muO0G6FuR2Fa.jpg",
+    "release_date": "1989-12-08",
+    "release_year": 1989,
+    "vote_average": 5.9,
+    "popularity": 2.3517,
+    "genres": "Comedy"
+  },
+  "shrek:": {
+    "id": 808,
+    "title": "Shrek",
+    "overview": "It ain't easy bein' green -- especially if you're a likable (albeit smelly) ogre named Shrek. On a mission to retrieve a gorgeous princess from the clutches of a fire-breathing dragon, Shrek teams up with an unlikely compatriot -- a wisecracking donkey.",
+    "poster_path": "/iB64vpL3dIObOtMZgX3RqdVdQDc.jpg",
+    "release_date": "2001-05-18",
+    "release_year": 2001,
+    "vote_average": 7.758,
+    "popularity": 27.8434,
+    "genres": "Animation, Comedy, Fantasy, Adventure, Family"
+  },
+  "smiley face": {
+    "id": 13168,
+    "title": "Smiley Face",
+    "overview": "Jane, a struggling but perpetually stoned actress, has a busy day ahead. She has several important tasks on her list, including buying more marijuana. Even though she already has a good start on the day's planned drug use, she eats her roommate's pot-laced cupcakes and embarks on a series of misadventures all over Los Angeles.",
+    "poster_path": "/kGQZGujjw8S6NKs5C8nugsMtol.jpg",
+    "release_date": "2007-11-16",
+    "release_year": 2007,
+    "vote_average": 6.005,
+    "popularity": 2.6462,
+    "genres": "Comedy"
+  },
+  "spacewoman | apr 29-may 3": {},
+  "tampopo": {
+    "id": 11830,
+    "title": "Tampopo",
+    "overview": "In this humorous paean to the joys of food, a pair of truck drivers happen onto a decrepit roadside shop selling ramen noodles. The widowed owner, Tampopo, begs them to help her turn her establishment into a paragon of the \"art of noodle-soup making\". Interspersed are satirical vignettes about the importance of food to different aspects of human life.",
+    "poster_path": "/ArYdSuX3zY9fMsE4LqmBl7xJq5R.jpg",
+    "release_date": "1985-11-23",
+    "release_year": 1985,
+    "vote_average": 7.787,
+    "popularity": 5.9661,
+    "genres": "Comedy"
+  },
+  "terror of mechagodzilla": {
+    "id": 19333,
+    "title": "Terror of Mechagodzilla",
+    "overview": "A submarine expedition to salvage the remains of Mechagodzilla is thwarted by a massive dinosaur named Titanosaurus. An Interpol investigation leads biologist Ichinose to uncover the work of Dr. Mafune and his mysterious daughter Katsura. Aligned with the Black Hole Aliens, Katsura's life becomes entwined with the resurrected machine.",
+    "poster_path": "/kHBJNwdxTJ4ub01bWg6WFpS3WF2.jpg",
+    "release_date": "1975-03-15",
+    "release_year": 1975,
+    "vote_average": 6.8,
+    "popularity": 2.8408,
+    "genres": "Sci-Fi, Action, Drama"
+  },
+  "that time i got reincarnated as a slime the movie: scarlet bond": {
+    "id": 876792,
+    "title": "That Time I Got Reincarnated as a Slime the Movie: Scarlet Bond",
+    "overview": "A long-running conspiracy is swirling over a mysterious power wielded by the Queen in Raja, a small country west of Tempest. When a slime who evolved into a Demon Lord named Rimuru Tempest crosses paths with Hiiro, a survivor of the Ogre race, an incredible adventure packed with new characters begins. The power of bonds will be put to the test!",
+    "poster_path": "/xITip9n9uMAUA0TU6niMXU2tbh0.jpg",
+    "release_date": "2022-11-25",
+    "release_year": 2022,
+    "vote_average": 7.36,
+    "popularity": 6.7027,
+    "genres": "Animation, Fantasy, Adventure"
+  },
+  "the cockeyed world of russ meyer with joe bob briggs & darcy in-person": {},
+  "the devil wears prada 2": {
+    "id": 1314481,
+    "title": "The Devil Wears Prada 2",
+    "overview": "Miranda Priestly navigates her career amid the decline of traditional magazine publishing. She faces off against Emily Charlton, her one-time assistant, now a high-powered executive for a luxury group, with advertising dollars that Priestly desperately needs.",
+    "poster_path": "/p35IoKfBtJDNiWJMO8ZEtIMZSfW.jpg",
+    "release_date": "2026-04-29",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 17.6095,
+    "genres": "Drama, Comedy"
+  },
+  "the great dictator": {
+    "id": 914,
+    "title": "The Great Dictator",
+    "overview": "Dictator Adenoid Hynkel tries to expand his empire while a poor Jewish barber tries to avoid persecution from Hynkel's regime.",
+    "poster_path": "/1QpO9wo7JWecZ4NiBuu625FiY1j.jpg",
+    "release_date": "1940-10-15",
+    "release_year": 1940,
+    "vote_average": 8.281,
+    "popularity": 9.5645,
+    "genres": "Comedy, War"
+  },
+  "the love that remains": {
+    "id": 1258509,
+    "title": "The Love That Remains",
+    "overview": "Tenderly captures a year in the life of a family as the parents navigate their separation. Through both playful and heartfelt moments, the film portrays the bittersweet essence of faded love and shared memories amidst the changing seasons.",
+    "poster_path": "/igNHWsxXZeGegiPttjQCv5ImAu7.jpg",
+    "release_date": "2025-08-14",
+    "release_year": 2025,
+    "vote_average": 6.389,
+    "popularity": 1.8732,
+    "genres": "Drama, Comedy"
+  },
+  "the master": {
+    "id": 68722,
+    "title": "The Master",
+    "overview": "Freddie, a volatile, heavy-drinking veteran who suffers from post-traumatic stress disorder, finds some semblance of a family when he stumbles onto the ship of Lancaster Dodd, the charismatic leader of a new \"religion\" he forms after World War II.",
+    "poster_path": "/rUSjbyvYWN9H4az8xt0tDtU7I6v.jpg",
+    "release_date": "2012-09-14",
+    "release_year": 2012,
+    "vote_average": 7.103,
+    "popularity": 5.0181,
+    "genres": "Drama"
+  },
+  "the producers": {
+    "id": 30197,
+    "title": "The Producers",
+    "overview": "A conniving Broadway producer and his meek accountant plan to profit from charming wealthy old biddies to invest in an overbudget production, and then put on a sure-fire disaster, so nobody will ask for their money back \u2014 and what's more disastrous than a tasteless musical celebrating Adolf Hitler.",
+    "poster_path": "/9qCIkNWGuRj5lMyeOXwJs8z9nRz.jpg",
+    "release_date": "1968-03-18",
+    "release_year": 1968,
+    "vote_average": 7.071,
+    "popularity": 2.8105,
+    "genres": "Comedy"
+  },
+  "the shining": {
+    "id": 694,
+    "title": "The Shining",
+    "overview": "Jack Torrance accepts a caretaker job at the Overlook Hotel, where he, along with his wife Wendy and their son Danny, must live isolated from the rest of the world for the winter. But they aren't prepared for the madness that lurks within.",
+    "poster_path": "/uAR0AWqhQL1hQa69UDEbb2rE5Wx.jpg",
+    "release_date": "1980-05-23",
+    "release_year": 1980,
+    "vote_average": 8.205,
+    "popularity": 15.5005,
+    "genres": "Horror, Thriller"
+  },
+  "tomorrow never dies": {
+    "id": 714,
+    "title": "Tomorrow Never Dies",
+    "overview": "A deranged media mogul is staging international incidents to pit the world's superpowers against each other. Now James Bond must take on this evil mastermind in an adrenaline-charged battle to end his reign of terror and prevent global pandemonium.",
+    "poster_path": "/gZm002w7q9yLOkltxT76TWGfdZX.jpg",
+    "release_date": "1997-12-11",
+    "release_year": 1997,
+    "vote_average": 6.376,
+    "popularity": 7.6741,
+    "genres": "Adventure, Action, Thriller"
+  },
+  "young frankenstein": {
+    "id": 3034,
+    "title": "Young Frankenstein",
+    "overview": "A young neurosurgeon inherits the castle of his grandfather, the famous Dr. Victor von Frankenstein. In the castle he finds a funny hunchback, a pretty lab assistant and the elderly housekeeper. Young Frankenstein believes that the work of his grandfather was delusional, but when he discovers the book where the mad doctor described his reanimation experiment, he suddenly changes his mind.",
+    "poster_path": "/3BvvVKPg9yucChlSvQtJxAbLmj9.jpg",
+    "release_date": "1974-12-15",
+    "release_year": 1974,
+    "vote_average": 7.854,
+    "popularity": 3.7752,
+    "genres": "Comedy"
+  },
+  "_detail_11830": {
+    "runtime": 115,
+    "director": "J\u016bz\u014d Itami",
+    "imdb_id": "tt0092048"
+  },
+  "_detail_30197": {
+    "runtime": 89,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0063462"
+  },
+  "_detail_9377": {
+    "runtime": 103,
+    "director": "John Hughes",
+    "imdb_id": "tt0091042"
+  },
+  "_detail_13168": {
+    "runtime": 85,
+    "director": "Gregg Araki",
+    "imdb_id": "tt0780608"
+  },
+  "_detail_694": {
+    "runtime": 144,
+    "director": "Stanley Kubrick",
+    "imdb_id": "tt0081505"
+  },
+  "_detail_68722": {
+    "runtime": 137,
+    "director": "Paul Thomas Anderson",
+    "imdb_id": "tt1560747"
+  },
+  "_detail_12535": {
+    "runtime": 94,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0076141"
+  },
+  "_detail_86409": {
+    "runtime": 111,
+    "director": "Johnnie To",
+    "imdb_id": "tt1941536"
+  },
+  "_detail_1336265": {
+    "runtime": 76,
+    "director": "Jean-Jacques Martinod",
+    "imdb_id": "tt35354956"
+  },
+  "_detail_230030": {
+    "runtime": 135,
+    "director": "Marco Bellocchio",
+    "imdb_id": "tt0073444"
+  },
+  "_detail_55721": {
+    "runtime": 125,
+    "director": "Paul Feig",
+    "imdb_id": "tt1478338"
+  },
+  "_detail_876792": {
+    "runtime": 108,
+    "director": "Yasuhito Kikuchi",
+    "imdb_id": "tt15467380"
+  },
+  "_detail_37833": {
+    "runtime": 66,
+    "director": "Louis J. Gasnier",
+    "imdb_id": "tt0028346"
+  },
+  "_detail_11072": {
+    "runtime": 93,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0071230"
+  },
+  "_detail_1057823": {
+    "runtime": 21,
+    "director": "John Paul Safford",
+    "imdb_id": "tt24058852"
+  },
+  "_detail_10234": {
+    "runtime": 109,
+    "director": "Michael Haneke",
+    "imdb_id": "tt0119167"
+  },
+  "_detail_936075": {
+    "runtime": 127,
+    "director": "Antoine Fuqua",
+    "imdb_id": "tt11378946"
+  },
+  "_detail_269254": {
+    "runtime": 28,
+    "director": "Marissa Aroy",
+    "imdb_id": null
+  },
+  "_detail_1303498": {
+    "runtime": 97,
+    "director": "Brandon Daley",
+    "imdb_id": "tt30304841"
+  },
+  "_detail_914": {
+    "runtime": 125,
+    "director": "Charlie Chaplin",
+    "imdb_id": "tt0032553"
+  },
+  "_detail_1317149": {
+    "runtime": 121,
+    "director": "Kirk Jones",
+    "imdb_id": "tt31514146"
+  },
+  "_detail_1563190": {
+    "runtime": 92,
+    "director": "Anissa Bonnefont",
+    "imdb_id": null
+  },
+  "_detail_11157": {
+    "runtime": 99,
+    "director": "Susan Seidelman",
+    "imdb_id": "tt0098309"
+  },
+  "_detail_1458275": {
+    "runtime": 79,
+    "director": "Graham Mason",
+    "imdb_id": "tt36414565"
+  },
+  "_detail_950499": {
+    "runtime": 79,
+    "director": "Kati Kelli",
+    "imdb_id": "tt26443044"
+  },
+  "_detail_19333": {
+    "runtime": 83,
+    "director": "Ishir\u014d Honda",
+    "imdb_id": "tt0073373"
+  },
+  "_detail_27019": {
+    "runtime": 193,
+    "director": "Jacques Rivette",
+    "imdb_id": "tt0071381"
+  },
+  "_detail_1235137": {
+    "runtime": 87,
+    "director": "Julian Glander",
+    "imdb_id": "tt31021863"
+  },
+  "_detail_565028": {
+    "runtime": 91,
+    "director": "Nia DaCosta",
+    "imdb_id": "tt9347730"
+  },
+  "_detail_1539299": {
+    "runtime": 80,
+    "director": "Simon Hilton",
+    "imdb_id": "tt40622377"
+  },
+  "_detail_1314481": {
+    "runtime": 120,
+    "director": "David Frankel",
+    "imdb_id": "tt33612209"
+  },
+  "_detail_714": {
+    "runtime": 119,
+    "director": "Roger Spottiswoode",
+    "imdb_id": "tt0120347"
+  },
+  "_detail_1337592": {
+    "runtime": 71,
+    "director": "Pete Ohs",
+    "imdb_id": "tt33712666"
+  },
+  "_detail_1154538": {
+    "runtime": 100,
+    "director": "Matt Johnson",
+    "imdb_id": "tt35522483"
+  },
+  "_detail_1642859": {
+    "runtime": 105,
+    "director": "Malcolm Venville",
+    "imdb_id": "tt36163614"
+  },
+  "_detail_808": {
+    "runtime": 90,
+    "director": "Andrew Adamson",
+    "imdb_id": "tt0126029"
+  },
+  "_detail_1333100": {
+    "runtime": 145,
+    "director": "Yuichiro Hayashi",
+    "imdb_id": "tt33175825"
+  },
+  "_detail_858612": {
+    "runtime": 100,
+    "director": null,
+    "imdb_id": "tt12630666"
+  },
+  "_detail_754": {
+    "runtime": 139,
+    "director": "John Woo",
+    "imdb_id": "tt0119094"
+  },
+  "_detail_1409302": {
+    "runtime": 14,
+    "director": "Khalid Raffy",
+    "imdb_id": null
+  },
+  "_detail_1258509": {
+    "runtime": 109,
+    "director": "Hlynur P\u00e1lmason",
+    "imdb_id": "tt33381401"
+  },
+  "_detail_1139937": {
+    "runtime": 81,
+    "director": "Anthony Cousins",
+    "imdb_id": "tt21377766"
+  },
+  "_detail_13370": {
+    "runtime": 92,
+    "director": "Christopher Guest",
+    "imdb_id": "tt0310281"
+  },
+  "_detail_3034": {
+    "runtime": 106,
+    "director": "Mel Brooks",
+    "imdb_id": "tt0072431"
   }
 }

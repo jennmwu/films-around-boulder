@@ -48,9 +48,12 @@ def run():
         except Exception as e:
             print(f"ERROR in {name} scraper: {e}")
 
-    # Filter to today through 14 days out
+    # Filter to today through 45 days out
+    # IFS and SIE publish full semester schedules far in advance;
+    # multiplexes (Cinemark, Regal, Alamo) self-limit to ~14 days so
+    # extending the window here doesn't add noise for them.
     today = datetime.now().strftime("%Y-%m-%d")
-    cutoff = (datetime.now() + timedelta(days=14)).strftime("%Y-%m-%d")
+    cutoff = (datetime.now() + timedelta(days=45)).strftime("%Y-%m-%d")
     all_movies = [m for m in all_movies if today <= m["date"] <= cutoff]
 
     # Sort by date, then time (convert to 24h for proper ordering)
