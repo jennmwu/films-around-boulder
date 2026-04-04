@@ -104,10 +104,35 @@ def _parse_event(event, today_utc):
     event_id = event.get("id", "")
     ticket_url = f"https://denverfilm.eventive.org/schedule/{event_id}"
 
-    # Detect special attribute from title
+    # Detect special attribute from title and description
     special = None
-    if "members only" in event_name.lower() or "member sneak" in event_name.lower():
+    event_name_lower = event_name.lower()
+    # Collect full description text from event + embedded films
+    desc = event.get("description", "") or ""
+    for film in event.get("films", []):
+        desc += (film.get("description", "") or "") + (film.get("short_description", "") or "")
+    desc_lower = desc.lower()
+
+    if "members only" in event_name_lower or "member sneak" in event_name_lower:
         special = "Members Only"
+    elif (
+        "in person" in event_name_lower
+        or "in-person" in event_name_lower
+        or re.search(r"q\s*&\s*(amp;)?a", desc_lower)
+        or "in person" in desc_lower
+        or "live panel" in desc_lower
+        or "filmmaker in attendance" in desc_lower
+    ):
+        # Try to extract who is in person from the event name
+        # Pattern: "Film Title with Joe Bob Briggs & Darcy IN-PERSON!"
+        person_name = None
+        with_match = re.search(r'\bwith\s+(.+?)\s+in.?person', event_name, re.IGNORECASE)
+        if with_match:
+            person_name = with_match.group(1).strip().rstrip('!')
+        if person_name:
+            special = f"Filmmaker Q&A: {person_name}"
+        else:
+            special = "Filmmaker Q&A"
 
     # Use embedded film data if available
     films = event.get("films", [])

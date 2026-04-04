@@ -20,6 +20,7 @@ const THEATER_URLS = {
   'Landmark Mayan': 'https://www.landmarktheatres.com/denver/mayan-theatre',
   'Alamo Sloans Lake': 'https://drafthouse.com/denver/theater/sloans-lake',
   'Alamo Westminster': 'https://drafthouse.com/denver/theater/westminster',
+  'Alamo Littleton': 'https://drafthouse.com/denver/theater/littleton',
   'Cinemark Boulder': 'https://www.cinemark.com/theatres/co-boulder/century-boulder',
   'Dairy Arts Center': 'https://thedairy.org/cinema/',
   'BIFF': 'https://biff1.com',
@@ -36,6 +37,7 @@ const THEATER_DISTANCE = {
   'AMC Flatiron Crossing': 13,
   'Regal Longmont': 15,
   'Alamo Westminster': 18,
+  'Alamo Littleton': 22,
   'AMC Westminster': 20,
   'Landmark Mayan': 28,
   'SIE FilmCenter': 30,
@@ -340,22 +342,64 @@ function sortTitles(titles, byTitle) {
   });
 }
 
+// ===================== BADGES =====================
+
+function getFormatBadge(m) {
+  const fmt = (m.format || '').toLowerCase();
+  if (fmt === '35mm') return { cls: 'fmt-35mm', label: '35mm' };
+  if (fmt === '70mm') return { cls: 'fmt-70mm', label: '70mm' };
+  if (fmt === 'imax') return { cls: 'fmt-imax', label: 'IMAX' };
+  if (fmt === 'dolby') return { cls: 'fmt-dolby', label: 'Dolby' };
+  return null;
+}
+
+function getSpecialBadge(m) {
+  const special = (m.special || '').toLowerCase();
+  const cats = m.categories || [];
+  if (cats.includes('Festival') || special.includes('biff')) return { cls: 'sp-festival', label: 'Festival' };
+  if (special.includes('q&a') || special.includes('filmmaker')) return { cls: 'sp-qa', label: 'Q&A' };
+  if (
+    special.includes('anniversary') || special.includes('special screening') ||
+    special.includes('movie party') || special.includes('live')
+  ) return { cls: 'sp-event', label: 'Event' };
+  return null;
+}
+
+function renderBadges(showings) {
+  // Use the "best" showing to pick badges (prefer non-standard format)
+  const m = showings.find(s => s.format && s.format !== 'Standard') || showings[0];
+  const fmt = getFormatBadge(m);
+  const sp = getSpecialBadge(m);
+  let html = '';
+  if (fmt) html += `<span class="poster-badge poster-badge-fmt ${fmt.cls}">${fmt.label}</span>`;
+  if (sp)  html += `<span class="poster-badge poster-badge-sp ${sp.cls}">${sp.label}</span>`;
+  return html;
+}
+
 function getRecommendedScore(showings) {
   const s = showings[0];
   const cats = s.categories || [];
   let score = 0;
 
-  // Letterboxd is the primary signal (0-5 scale, heavy weight)
+  // Ratings: use both LB and IMDb when available
   if (s.letterboxd_rating) score += s.letterboxd_rating * 20;
-  else if (s.imdb_rating) score += s.imdb_rating * 6;
+  if (s.imdb_rating) score += s.imdb_rating * 6;
 
-  // Category boosts (smaller than ratings, act as tiebreakers)
+  // Category boosts
   if (cats.includes('Classic')) score += 15;
-  if (cats.includes('Back in Theaters')) score += 12;
-  if (cats.includes('Independent')) score += 10;
   if (cats.includes('Festival')) score += 15;
+  if (cats.includes('Independent')) score += 10;
+  if (cats.includes('Back in Theaters')) score += 5;
 
-  // Penalize pure new releases with no ratings (likely blockbusters with no critical consensus yet)
+  // Small boost for filmmaker Q&A (not generic events — avoid inflating anniversary screenings)
+  const special = (s.special || '').toLowerCase();
+  if (special.includes('q&a') || special.includes('filmmaker')) score += 8;
+
+  // Boost for rare formats
+  const fmt = (s.format || '').toLowerCase();
+  if (fmt === '35mm' || fmt === '70mm') score += 10;
+
+  // Penalize pure new releases with no ratings
   if (cats.length === 1 && cats[0] === 'New Release' && !s.letterboxd_rating && !s.imdb_rating) {
     score -= 20;
   }
@@ -483,6 +527,12 @@ function renderDetailPanel(showings, groupKey) {
   // Director
   if (director) html += `<div class="detail-director">Dir. ${esc(director)}</div>`;
 
+  // Q&A / special event info
+  const specialNote = s.special || '';
+  if (specialNote.toLowerCase().includes('q&a') || specialNote.toLowerCase().includes('filmmaker')) {
+    html += `<div class="detail-qa">🎙 ${esc(specialNote)}</div>`;
+  }
+
   // Ratings: IMDb, RT, Letterboxd (with logos)
   const hasRatings = s.imdb_rating || s.rt_score || s.letterboxd_rating;
   if (hasRatings) {
@@ -582,6 +632,7 @@ function renderByDate(container, movies) {
     html += '<div class="grid-poster-wrap">';
     if (poster) html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
     else html += `<div class="grid-poster grid-poster-placeholder"><span>${esc(title)}</span></div>`;
+    html += renderBadges(showings);
     html += '</div>';
     html += `<div class="grid-title">${esc(title)}</div>`;
     if (year) html += `<div class="grid-meta">${year}</div>`;
@@ -633,6 +684,7 @@ function renderByLocation(container, movies) {
       html += '<div class="grid-poster-wrap">';
       if (poster) html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
       else html += `<div class="grid-poster grid-poster-placeholder"><span>${esc(title)}</span></div>`;
+      html += renderBadges(showings);
       html += '</div>';
       html += `<div class="grid-title">${esc(title)}</div>`;
       if (year) html += `<div class="grid-meta">${year}</div>`;
@@ -735,7 +787,7 @@ function formatShortDate(dateStr) {
 function shortName(theater) {
   const map = {
     'Boulder IFS': 'IFS', 'SIE FilmCenter': 'SIE', 'Landmark Mayan': 'Mayan',
-    'Alamo Sloans Lake': 'Alamo SL', 'Alamo Westminster': 'Alamo West',
+    'Alamo Sloans Lake': 'Alamo SL', 'Alamo Westminster': 'Alamo West', 'Alamo Littleton': 'Alamo Lit',
     'Cinemark Boulder': 'Cinemark', 'Dairy Arts Center': 'Dairy',
     'Regal Longmont': 'Regal', 'AMC Flatiron Crossing': 'AMC Flat',
     'AMC Westminster': 'AMC West',

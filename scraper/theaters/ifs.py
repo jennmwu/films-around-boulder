@@ -109,15 +109,49 @@ def _scrape_event_detail(url):
     except ValueError:
         time_formatted = time_str
 
-    # Check for special attributes using images (more reliable than text matching)
+    # Check for special attributes -- IFS uses plain text like "Lulu Wang in person!"
+    # Try to extract the person's name so we can show "Filmmaker Q&A: Lulu Wang"
     special = None
-    special_imgs = soup.find_all("img", alt=True)
-    for img in special_imgs:
-        alt = img.get("alt", "").lower()
-        if "filmmaker" in alt or "q & a" in alt or "q&a" in alt:
+    text_lower = text.lower()
+    if (
+        "in person" in text_lower
+        or "filmmaker in attendance" in text_lower
+        or "director in attendance" in text_lower
+        or re.search(r"q\s*&\s*a", text_lower)
+    ):
+        # Try to extract "Name in person" — look for up to 5 capitalized words before "in person"
+        # then strip film title words and role words to isolate the actual person's name
+        person_match = re.search(
+            r'([A-Z][a-zA-Z\-]+(?:\s+[A-Z][a-zA-Z\-]+){0,4})\s+in\s+(?:person|attendance)',
+            text
+        )
+        ROLE_WORDS = {
+            'Director', 'Directors', 'Filmmaker', 'Filmmakers', 'Editor', 'Editors',
+            'Producer', 'Producers', 'Writer', 'Writers', 'Actor', 'Actress', 'Archivist',
+            'Cinematographer', 'Composer', 'Screenwriter',
+        }
+        person_name = None
+        if person_match:
+            title_words = set(re.sub(r"[^a-zA-Z\s]", "", title).split())
+            parts = person_match.group(1).split()
+            while parts and (parts[0] in ROLE_WORDS or parts[0] in title_words):
+                parts.pop(0)
+            if parts and len(parts) <= 4:
+                person_name = ' '.join(parts)
+        if person_name:
+            special = f"Filmmaker Q&A: {person_name}"
+        else:
             special = "Filmmaker Q&A"
-        elif "free" in alt:
-            special = "Free Admission"
+    elif "free admission" in text_lower or "free screening" in text_lower:
+        special = "Free Admission"
+
+    if not special:
+        for img in soup.find_all("img", alt=True):
+            alt = img.get("alt", "").lower()
+            if "filmmaker" in alt or "q & a" in alt or "q&a" in alt:
+                special = "Filmmaker Q&A"
+            elif "free" in alt:
+                special = "Free Admission"
 
     # Check for format - look specifically in the metadata line, not the whole page
     # IFS metadata format: "Country, Year, in Language, Runtime min"

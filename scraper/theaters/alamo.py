@@ -13,6 +13,7 @@ SCHEDULE_API = "https://drafthouse.com/s/mother/v2/schedule/venue"
 VENUES = [
     {"slug": "sloans-lake", "name": "Alamo Sloans Lake"},
     {"slug": "westminster", "name": "Alamo Westminster"},
+    {"slug": "littleton", "name": "Alamo Littleton"},
 ]
 
 HEADERS = {
