@@ -20,5 +20,11 @@
     "director": "Emerald Fennell",
     "genres": "Drama, Romance",
     "tmdb_id": 1316092
+  },
+  "city on fire": {
+    "year": 1987,
+    "director": "Ringo Lam",
+    "genres": "Action, Crime, Thriller",
+    "tmdb_id": 42120
   }
 }

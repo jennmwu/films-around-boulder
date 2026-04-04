@@ -480,7 +480,7 @@ function updateExpandState(main) {
   const showings = filtered.filter(m => m.title === expandedTitle);
   if (showings.length === 0) return;
 
-  const groupKey = activeView === 'now' ? 'theater' : 'date';
+  const groupKey = 'theater';
   const detailHtml = renderDetailPanel(showings, groupKey);
 
   // Insert detail panel after the item
@@ -748,11 +748,10 @@ function renderComingSoon(container, allFiltered) {
     return;
   }
 
-  const INDIE = ['Boulder IFS', 'SIE FilmCenter', 'Landmark Mayan', 'Dairy Arts Center'];
-  const MAX_VENUES = 2;
+  const MAX_VENUES = 3;
 
   let html = '';
-  html += '<div class="poster-grid">';
+  html += '<div class="poster-grid coming-soon-grid">';
 
   titles.forEach(title => {
     const showings = byTitle[title].sort((a, b) => a.date.localeCompare(b.date));
@@ -776,8 +775,7 @@ function renderComingSoon(container, allFiltered) {
     html += `<div class="grid-meta coming-date-range">${esc(dateRange)}</div>`;
     html += '<div class="coming-venues">';
     theaters.slice(0, MAX_VENUES).forEach(t => {
-      const isIndie = INDIE.includes(t);
-      html += `<span class="coming-venue-chip${isIndie ? ' indie' : ''}">${esc(shortName(t))}</span>`;
+      html += `<span class="coming-venue-chip">${esc(shortName(t))}</span>`;
     });
     if (theaters.length > MAX_VENUES) html += `<span class="coming-venue-more">+${theaters.length - MAX_VENUES} more</span>`;
     html += '</div>';

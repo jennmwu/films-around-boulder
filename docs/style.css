@@ -155,11 +155,10 @@ main { max-width: 900px; margin: 0 auto; padding: 0 20px; min-height: 50vh; }
   background: #1e1e1e; border: 1px solid #444; color: #aaa;
   padding: 3px 7px; border-radius: 3px; white-space: nowrap;
 }
-.coming-venue-chip.indie {
-  border-color: rgba(224,124,79,0.5); color: #e07c4f;
-  background: rgba(224,124,79,0.08);
-}
 .coming-venue-more { font-size: 9px; color: var(--text-dim); padding: 3px 0; }
+/* Push venue chips to bottom of card so they align across the row */
+.coming-soon-grid .grid-item { display: flex; flex-direction: column; }
+.coming-soon-grid .coming-venues { margin-top: auto; padding-top: 4px; }
 
 /* ---- Poster badges (format + special event) ---- */
 .poster-badge {
