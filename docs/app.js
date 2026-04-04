@@ -262,6 +262,20 @@ function renderDateNav() {
   if (dates.length === 0) { container.innerHTML = ''; return; }
   if (!dates.includes(activeDate)) activeDate = dates[0];
 
+  // If the strip already exists with the same dates, just swap the active class
+  // to avoid the layout-shift bounce caused by re-rendering the whole strip.
+  const existingChips = container.querySelectorAll('.date-chip');
+  const existingDates = [...existingChips].map(c => c.dataset.date);
+  const sameStrip = existingDates.length === dates.length && dates.every((d, i) => d === existingDates[i]);
+
+  if (sameStrip) {
+    existingChips.forEach(chip => {
+      chip.classList.toggle('active', chip.dataset.date === activeDate);
+    });
+    return;
+  }
+
+  // Full re-render (first load or filter changed the set of dates)
   let html = '<div class="date-strip">';
   dates.forEach(date => {
     const d = new Date(date + 'T12:00:00');
@@ -277,7 +291,7 @@ function renderDateNav() {
   });
   requestAnimationFrame(() => {
     const a = container.querySelector('.date-chip.active');
-    if (a) a.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    if (a) a.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'center' });
   });
 }
 
