@@ -147,18 +147,19 @@ main { max-width: 900px; margin: 0 auto; padding: 0 20px; min-height: 50vh; }
 .grid-meta { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
 
 /* ---- Coming Soon ---- */
-.coming-soon-header { margin-bottom: 16px; }
-.coming-soon-sub { font-size: 12px; color: var(--text-dim); }
 .coming-date-range { color: var(--accent) !important; font-weight: 600; }
 .coming-venues { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
 .coming-venue-chip {
   font-size: 9px; font-family: 'Outfit', sans-serif; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.3px;
-  background: #1a1a1a; border: 1px solid #333; color: var(--text-dim);
-  padding: 2px 5px; border-radius: 2px; white-space: nowrap;
+  text-transform: uppercase; letter-spacing: 0.5px;
+  background: #1e1e1e; border: 1px solid #444; color: #aaa;
+  padding: 3px 7px; border-radius: 3px; white-space: nowrap;
 }
-.coming-venue-chip.indie { border-color: rgba(224,124,79,0.4); color: #e07c4f; }
-.coming-venue-more { font-size: 9px; color: var(--text-dim); padding: 2px 0; }
+.coming-venue-chip.indie {
+  border-color: rgba(224,124,79,0.5); color: #e07c4f;
+  background: rgba(224,124,79,0.08);
+}
+.coming-venue-more { font-size: 9px; color: var(--text-dim); padding: 3px 0; }
 
 /* ---- Poster badges (format + special event) ---- */
 .poster-badge {

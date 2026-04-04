@@ -751,7 +751,7 @@ function renderComingSoon(container, allFiltered) {
   const INDIE = ['Boulder IFS', 'SIE FilmCenter', 'Landmark Mayan', 'Dairy Arts Center'];
   const MAX_VENUES = 2;
 
-  let html = '<div class="coming-soon-header"><div class="coming-soon-sub">Movies opening in the next 45 days, sorted by recommended score</div></div>';
+  let html = '';
   html += '<div class="poster-grid">';
 
   titles.forEach(title => {
