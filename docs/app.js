@@ -53,7 +53,12 @@ const SORT_OPTIONS = [
 
 let data = null;
 let siteConfig = null;
-let activeView = 'date';
+let activeView = 'now';
+const NOW_PLAYING_DAYS = 10;
+const getNowPlayingEnd = () => {
+  const d = new Date(); d.setDate(d.getDate() + NOW_PLAYING_DAYS);
+  return d.toISOString().slice(0, 10);
+};
 let activeFilters = null;
 let activeCategories = null;
 let activeDate = null;
@@ -105,7 +110,7 @@ async function init() {
     const allCats = new Set();
     data.movies.forEach(m => (m.categories || []).forEach(c => allCats.add(c)));
     activeCategories = new Set(allCats);
-    activeView = 'date';
+    activeView = 'now';
     const today = new Date().toISOString().slice(0, 10);
     const dates = [...new Set(data.movies.map(m => m.date))].sort();
     activeDate = dates.includes(today) ? today : dates[0];
@@ -115,7 +120,7 @@ async function init() {
     document.getElementById('filter-drawer').classList.add('hidden');
     document.getElementById('sort-select').value = 'recommended';
     document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.toggle-btn[data-view="date"]').classList.add('active');
+    document.querySelector('.toggle-btn[data-view="now"]').classList.add('active');
     syncFilterChips(allTheaters);
     renderDateNav();
     renderView();
@@ -257,10 +262,12 @@ function addChip(container, text, className, onClick) {
 
 function renderDateNav() {
   const container = document.getElementById('date-nav');
-  if (activeView !== 'date') { container.innerHTML = ''; container.style.display = 'none'; return; }
+  if (activeView !== 'now') { container.innerHTML = ''; container.style.display = 'none'; return; }
   container.style.display = '';
+  const today = new Date().toISOString().slice(0, 10);
+  const nowEnd = getNowPlayingEnd();
   const filtered = getFilteredMovies();
-  const dates = [...new Set(filtered.map(m => m.date))].sort();
+  const dates = [...new Set(filtered.filter(m => m.date >= today && m.date <= nowEnd).map(m => m.date))].sort();
   if (dates.length === 0) { container.innerHTML = ''; return; }
   if (!dates.includes(activeDate)) activeDate = dates[0];
 
@@ -433,12 +440,12 @@ function renderView(expandOnly) {
   lastRenderedView = activeView;
   lastRenderedDate = activeDate;
 
-  if (activeView === 'date') {
+  if (activeView === 'now') {
     const dayMovies = filtered.filter(m => m.date === activeDate);
     if (dayMovies.length === 0) { main.innerHTML = '<div class="empty-state">Nothing playing this day.</div>'; return; }
     renderByDate(main, dayMovies);
   } else {
-    renderByLocation(main, filtered);
+    renderComingSoon(main, filtered);
   }
 
   if (expandedTitle) {
@@ -467,13 +474,13 @@ function updateExpandState(main) {
 
   targetItem.classList.add('expanded');
 
-  // Get showings for this title (scoped to active date in date view)
+  // Get showings for this title (scoped to active date in Now Playing)
   let filtered = getFilteredMovies();
-  if (activeView === 'date') filtered = filtered.filter(m => m.date === activeDate);
+  if (activeView === 'now') filtered = filtered.filter(m => m.date === activeDate);
   const showings = filtered.filter(m => m.title === expandedTitle);
   if (showings.length === 0) return;
 
-  const groupKey = activeView === 'date' ? 'theater' : 'date';
+  const groupKey = activeView === 'now' ? 'theater' : 'date';
   const detailHtml = renderDetailPanel(showings, groupKey);
 
   // Insert detail panel after the item
@@ -719,6 +726,69 @@ function getTheaterUrl(theater) {
   // Match BIFF venues
   if (theater.startsWith('BIFF')) return THEATER_URLS['BIFF'];
   return THEATER_URLS[theater] || null;
+}
+
+// ===================== COMING SOON =====================
+
+function renderComingSoon(container, allFiltered) {
+  const today = new Date().toISOString().slice(0, 10);
+  const nowEnd = getNowPlayingEnd();
+
+  // Titles appearing in the Now Playing window are excluded from Coming Soon
+  const nowTitles = new Set(allFiltered.filter(m => m.date >= today && m.date <= nowEnd).map(m => m.title));
+  const soonMovies = allFiltered.filter(m => m.date > nowEnd);
+
+  const byTitle = groupBy(soonMovies, 'title');
+  Object.keys(byTitle).forEach(t => { if (nowTitles.has(t)) delete byTitle[t]; });
+
+  const titles = sortTitles(Object.keys(byTitle), byTitle);
+
+  if (titles.length === 0) {
+    container.innerHTML = '<div class="empty-state">No upcoming movies beyond 10 days.</div>';
+    return;
+  }
+
+  const INDIE = ['Boulder IFS', 'SIE FilmCenter', 'Landmark Mayan', 'Dairy Arts Center'];
+  const MAX_VENUES = 2;
+
+  let html = '<div class="coming-soon-header"><div class="coming-soon-sub">Movies opening in the next 45 days, sorted by recommended score</div></div>';
+  html += '<div class="poster-grid">';
+
+  titles.forEach(title => {
+    const showings = byTitle[title].sort((a, b) => a.date.localeCompare(b.date));
+    const m = showings[0];
+    const poster = m.poster_url;
+    const isExpanded = expandedTitle === title;
+
+    const dates = [...new Set(showings.map(s => s.date))].sort();
+    const theaters = [...new Set(showings.map(s => s.theater))];
+    const dateRange = dates.length > 1 && dates[dates.length - 1] !== dates[0]
+      ? `${formatShortDate(dates[0])} – ${formatShortDate(dates[dates.length - 1])}`
+      : formatShortDate(dates[0]);
+
+    html += `<div class="grid-item ${isExpanded ? 'expanded' : ''}" data-title="${esc(title)}">`;
+    html += '<div class="grid-poster-wrap">';
+    if (poster) html += `<img class="grid-poster" src="${esc(poster)}" alt="${esc(title)}" loading="lazy">`;
+    else html += `<div class="grid-poster grid-poster-placeholder"><span>${esc(title)}</span></div>`;
+    html += renderBadges(showings);
+    html += '</div>';
+    html += `<div class="grid-title">${esc(title)}</div>`;
+    html += `<div class="grid-meta coming-date-range">${esc(dateRange)}</div>`;
+    html += '<div class="coming-venues">';
+    theaters.slice(0, MAX_VENUES).forEach(t => {
+      const isIndie = INDIE.includes(t);
+      html += `<span class="coming-venue-chip${isIndie ? ' indie' : ''}">${esc(shortName(t))}</span>`;
+    });
+    if (theaters.length > MAX_VENUES) html += `<span class="coming-venue-more">+${theaters.length - MAX_VENUES} more</span>`;
+    html += '</div>';
+    html += '</div>';
+
+    if (isExpanded) html += renderDetailPanel(showings, 'date');
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
+  attachGridListeners(container);
 }
 
 function attachGridListeners(container) {
