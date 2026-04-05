@@ -147,6 +147,20 @@ def enrich_movies(movies):
         normalized = normalize_title(title)
         cache_key = normalized.lower()
 
+        # If override specifies a tmdb_id, fetch that movie directly (bypasses search)
+        title_override = overrides.get(title.lower(), {})
+        if title_override.get("tmdb_id"):
+            id_cache_key = f"_id_{title_override['tmdb_id']}"
+            if id_cache_key in cache:
+                results_map[title] = cache[id_cache_key]
+                cache_hits += 1
+            else:
+                tmdb_data = _fetch_by_id(api_key, title_override["tmdb_id"])
+                cache[id_cache_key] = tmdb_data
+                results_map[title] = tmdb_data
+                lookups += 1
+            continue
+
         if cache_key in cache:
             results_map[title] = cache[cache_key]
             cache_hits += 1
@@ -281,6 +295,37 @@ def _fetch_details(api_key, movies, cache):
             m["director"] = detail["director"]
         if detail.get("imdb_id"):
             m["imdb_id"] = detail["imdb_id"]
+
+
+def _fetch_by_id(api_key, tmdb_id):
+    """Fetch a specific movie directly by TMDB ID. Used when overrides specify tmdb_id."""
+    try:
+        resp = requests.get(
+            f"{API_BASE}/movie/{tmdb_id}",
+            params={"api_key": api_key},
+            headers=HEADERS,
+            timeout=10,
+        )
+        if resp.status_code != 200:
+            print(f"[TMDB] Direct fetch failed for id {tmdb_id}: HTTP {resp.status_code}")
+            return {}
+        d = resp.json()
+        release_date = d.get("release_date", "")
+        release_year = int(release_date[:4]) if release_date and len(release_date) >= 4 else None
+        return {
+            "id": d.get("id"),
+            "title": d.get("title"),
+            "overview": d.get("overview", ""),
+            "poster_path": d.get("poster_path"),
+            "release_date": release_date,
+            "release_year": release_year,
+            "vote_average": d.get("vote_average"),
+            "popularity": d.get("popularity"),
+            "genres": _resolve_genres([g["id"] for g in d.get("genres", [])]),
+        }
+    except Exception as e:
+        print(f"[TMDB] Error fetching id {tmdb_id}: {e}")
+        return {}
 
 
 def _search_movie(api_key, query, original_title, year_hint=None):

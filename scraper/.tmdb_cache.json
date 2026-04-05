@@ -289,17 +289,6 @@
     "popularity": 0.5566,
     "genres": "Horror, Comedy"
   },
-  "city on fire": {
-    "id": 1206197,
-    "title": "City On Fire",
-    "overview": "The story of 3 men and a heist. 2 of them really need this heist to go well and 1 of them sees the other 2 as liabilities.",
-    "poster_path": "/4e1QmwQ3hQq6XAFcGwjbswwSRhZ.jpg",
-    "release_date": "2023-11-17",
-    "release_year": 2023,
-    "vote_average": 10.0,
-    "popularity": 0.1173,
-    "genres": "Crime, Drama"
-  },
   "comparsa": {
     "id": 1480404,
     "title": "Comparsa",
