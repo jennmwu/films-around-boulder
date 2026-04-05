@@ -113,7 +113,7 @@ header {
 .date-chip.active .date-chip-num { color: #000; }
 
 /* ===================== BANNER ===================== */
-.banner { max-width: 900px; margin: 0 auto; padding: 10px 20px; background: var(--accent-dim); border-left: 3px solid var(--accent); display: flex; align-items: center; gap: 12px; }
+.banner { max-width: 900px; margin: 0 auto 20px; padding: 10px 20px; background: var(--accent-dim); border-left: 3px solid var(--accent); display: flex; align-items: center; gap: 12px; }
 .banner-text { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--accent); flex: 1; line-height: 1.4; }
 .banner-text a { color: var(--accent); text-decoration: underline; font-weight: 700; }
 .banner-close { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 14px; padding: 2px 6px; }
