@@ -2794,5 +2794,133 @@
     "runtime": 106,
     "director": "Mel Brooks",
     "imdb_id": "tt0072431"
+  },
+  "ballerina": {
+    "id": 541671,
+    "title": "Ballerina",
+    "overview": "Taking place during the events of John Wick: Chapter 3 \u2013 Parabellum, Eve Macarro begins her training in the assassin traditions of the Ruska Roma.",
+    "poster_path": "/2VUmvqsHb6cEtdfscEA6fqqVzLg.jpg",
+    "release_date": "2025-06-04",
+    "release_year": 2025,
+    "vote_average": 7.24,
+    "popularity": 22.5787,
+    "genres": "Action, Thriller, Crime"
+  },
+  "bts world tour 'arirang' in japan: live viewing": {
+    "id": 1640677,
+    "title": "BTS World Tour 'Arirang' in Japan: Live Viewing",
+    "overview": "Pop Royalty BTS returns to the global stage with their highly anticipated world tour, marking their first large-scale tour in approximately four years. Spanning 34 cities across the world with a total of 82 shows, the tour opens with landmark concerts in Goyang, South Korea, and Tokyo, Japan, marking a new record for the most tour dates by a K-pop artist.",
+    "poster_path": "/iNBzpdLRX7OfajlnwNdJNlW0bCB.jpg",
+    "release_date": "2026-04-18",
+    "release_year": 2026,
+    "vote_average": 0.0,
+    "popularity": 0.282,
+    "genres": "Music"
+  },
+  "everything everywhere all at once": {
+    "id": 545611,
+    "title": "Everything Everywhere All at Once",
+    "overview": "An aging Chinese immigrant is swept up in an insane adventure, where she alone can save what's important to her by connecting with the lives she could have led in other universes.",
+    "poster_path": "/u68AjlvlutfEIcpmbYpKcdi09ut.jpg",
+    "release_date": "2022-03-24",
+    "release_year": 2022,
+    "vote_average": 7.722,
+    "popularity": 14.7713,
+    "genres": "Action, Adventure, Sci-Fi"
+  },
+  "miss congeniality": {
+    "id": 1493,
+    "title": "Miss Congeniality",
+    "overview": "When the local FBI office receives a letter from a terrorist known only as 'The Citizen', it's quickly determined that he's planning his next act at the Miss America beauty pageant. Because tough-as-nails Gracie Hart is the only female Agent at the office, she's chosen to go undercover as the contestant from New Jersey.",
+    "poster_path": "/pat3vKaRlB70he4ghwTMydR4TvP.jpg",
+    "release_date": "2000-12-22",
+    "release_year": 2000,
+    "vote_average": 6.524,
+    "popularity": 4.6699,
+    "genres": "Comedy, Crime, Action"
+  },
+  "pride & prejudice": {
+    "id": 4348,
+    "title": "Pride & Prejudice",
+    "overview": "A story of love and life among the landed English gentry during the Georgian era. Mr. Bennet is a gentleman living in Hertfordshire with his overbearing wife and five daughters, but if he dies their house will be inherited by a distant cousin whom they have never met, so the family's future happiness and security is dependent on the daughters making good marriages.",
+    "poster_path": "/o8UhmEbWPHmTUxP0lMuCoqNkbB3.jpg",
+    "release_date": "2005-09-16",
+    "release_year": 2005,
+    "vote_average": 8.047,
+    "popularity": 14.3312,
+    "genres": "Drama, Romance"
+  },
+  "rango": {
+    "id": 44896,
+    "title": "Rango",
+    "overview": "When Rango, a lost family pet, accidentally winds up in the gritty, gun-slinging Western town of Dirt, the theater-loving lizard suddenly finds himself the newly appointed sheriff. Welcomed as the last hope the town has been waiting for, Rango is forced to play his new role to the hilt and uncover the truth behind a looming water crisis\u2014before his act catches up with him.",
+    "poster_path": "/A5MP1guV8pbruieG0tnpPIbaJtt.jpg",
+    "release_date": "2011-03-02",
+    "release_year": 2011,
+    "vote_average": 6.89,
+    "popularity": 10.9413,
+    "genres": "Animation, Comedy, Family, Western, Adventure"
+  },
+  "the big lebowski": {
+    "id": 115,
+    "title": "The Big Lebowski",
+    "overview": "Jeffrey 'The Dude' Lebowski, a Los Angeles slacker who only wants to bowl and drink White Russians, is mistaken for another Jeffrey Lebowski, a wheelchair-bound millionaire, and finds himself dragged into a strange series of events involving nihilists, adult film producers, ferrets, errant toes, and large sums of money.",
+    "poster_path": "/3bv6WAp6BSxxYvB5ozKFUYuRA8C.jpg",
+    "release_date": "1998-03-06",
+    "release_year": 1998,
+    "vote_average": 7.84,
+    "popularity": 9.9751,
+    "genres": "Comedy, Crime"
+  },
+  "trango": {
+    "id": 1574295,
+    "title": "Trango",
+    "overview": "After a two-year attempt, ski mountaineers Christina \u2018Lusti\u2019 Lustenberger and Jim Morrison, joined by Nick McNutt and Chantel Astorga, ski the first descent of the Great Trango Glacier. They navigate risk, grapple with grief, and face physical danger as they push the limits of human experience.",
+    "poster_path": "/kyRLkp4ivRJvAZW21LqW6BXlUiU.jpg",
+    "release_date": "2025-10-26",
+    "release_year": 2025,
+    "vote_average": 0.0,
+    "popularity": 0.0429,
+    "genres": "Documentary"
+  },
+  "_detail_1574295": {
+    "runtime": 46,
+    "director": "Leo Hoorn",
+    "imdb_id": null
+  },
+  "_detail_4348": {
+    "runtime": 128,
+    "director": "Joe Wright",
+    "imdb_id": "tt0414387"
+  },
+  "_detail_44896": {
+    "runtime": 107,
+    "director": "Gore Verbinski",
+    "imdb_id": "tt1192628"
+  },
+  "_detail_1640677": {
+    "runtime": 195,
+    "director": "Ha Jung-jae",
+    "imdb_id": "tt39950835"
+  },
+  "_detail_115": {
+    "runtime": 117,
+    "director": "Joel Coen",
+    "imdb_id": "tt0118715"
+  },
+  "_detail_545611": {
+    "runtime": 140,
+    "director": "Daniel Scheinert",
+    "imdb_id": "tt6710474"
+  },
+  "_detail_1493": {
+    "runtime": 110,
+    "director": "Donald Petrie",
+    "imdb_id": "tt0212346"
+  },
+  "_detail_541671": {
+    "runtime": 125,
+    "director": "Len Wiseman",
+    "imdb_id": "tt7181546"
   }
 }
