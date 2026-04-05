@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 # Add scraper dir to path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from theaters import ifs, cinemark, landmark, alamo, dairy, sie, biff, regal, amc
+from theaters import ifs, cinemark, landmark, alamo, dairy, sie, biff, amc
 import tmdb
 import mdblist
 
@@ -26,7 +26,7 @@ SCRAPERS = [
     ("Dairy", dairy.scrape),
     ("SIE", sie.scrape),
     ("BIFF", biff.scrape),
-    ("Regal", regal.scrape),
+    # ("Regal", regal.scrape),  # TODO: Cloudflare blocks direct API; Playwright too slow for CI
     # ("AMC", amc.scrape),  # TODO: slow Playwright scraper, needs optimization
 ]
 
