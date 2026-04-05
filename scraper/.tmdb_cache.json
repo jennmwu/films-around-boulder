@@ -2911,5 +2911,37 @@
     "runtime": 125,
     "director": "Len Wiseman",
     "imdb_id": "tt7181546"
+  },
+  "_id_42120": {
+    "id": 42120,
+    "title": "City on Fire",
+    "overview": "Ko Chow is an undercover cop who is under pressure from all sides. His boss, Inspector Lau, wants him to infiltrate a gang of ruthless jewel thieves; his girlfriend wants him to commit to marriage or she will leave Hong Kong with another lover; and he is being pursued by other cops who are unaware that he is a colleague. Chow would rather quit the force, feeling guilty about betraying gang members who have become his friends.",
+    "poster_path": "/uOgCKhHsQvOFVNxOUdewPwc0Z9N.jpg",
+    "release_date": "1987-02-13",
+    "release_year": 1987,
+    "vote_average": 6.9,
+    "popularity": 3.1025,
+    "genres": "Action, Crime, Thriller"
+  },
+  "_id_1316092": {
+    "id": 1316092,
+    "title": "\"Wuthering Heights\"",
+    "overview": "Tragedy strikes when Heathcliff falls in love with Catherine Earnshaw, a woman from a wealthy family in 18th-century England.",
+    "poster_path": "/3YBce6dTh1D5oCMITXk2S5QhPt.jpg",
+    "release_date": "2026-02-11",
+    "release_year": 2026,
+    "vote_average": 6.5,
+    "popularity": 124.8051,
+    "genres": "Romance, Drama"
+  },
+  "_detail_1316092": {
+    "runtime": 136,
+    "director": "Emerald Fennell",
+    "imdb_id": "tt32897959"
+  },
+  "_detail_42120": {
+    "runtime": 105,
+    "director": "Ringo Lam Ling-Tung",
+    "imdb_id": "tt0093435"
   }
 }
