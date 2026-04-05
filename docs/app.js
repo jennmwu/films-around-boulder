@@ -55,10 +55,12 @@ let data = null;
 let siteConfig = null;
 let activeView = 'now';
 const NOW_PLAYING_DAYS = 10;
-const getNowPlayingEnd = () => {
-  const d = new Date(); d.setDate(d.getDate() + NOW_PLAYING_DAYS);
-  return d.toISOString().slice(0, 10);
-};
+function getLocalDateStr(offsetDays = 0) {
+  const d = new Date();
+  if (offsetDays) d.setDate(d.getDate() + offsetDays);
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+const getNowPlayingEnd = () => getLocalDateStr(NOW_PLAYING_DAYS);
 let activeFilters = null;
 let activeCategories = null;
 let activeDate = null;
@@ -90,7 +92,7 @@ async function init() {
 
   const dates = [...new Set(data.movies.map(m => m.date))].sort();
   if (dates.length > 0) {
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getLocalDateStr();
     activeDate = dates.includes(today) ? today : dates[0];
   }
 
@@ -111,7 +113,7 @@ async function init() {
     data.movies.forEach(m => (m.categories || []).forEach(c => allCats.add(c)));
     activeCategories = new Set(allCats);
     activeView = 'now';
-    const today = new Date().toISOString().slice(0, 10);
+    const today = getLocalDateStr();
     const dates = [...new Set(data.movies.map(m => m.date))].sort();
     activeDate = dates.includes(today) ? today : dates[0];
     activeSort = 'recommended';
@@ -264,7 +266,7 @@ function renderDateNav() {
   const container = document.getElementById('date-nav');
   if (activeView !== 'now') { container.innerHTML = ''; container.style.display = 'none'; return; }
   container.style.display = '';
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getLocalDateStr();
   const nowEnd = getNowPlayingEnd();
   const filtered = getFilteredMovies();
   const dates = [...new Set(filtered.filter(m => m.date >= today && m.date <= nowEnd).map(m => m.date))].sort();
@@ -570,7 +572,7 @@ function truncate(str, max) {
 
 function isTimePast(dateStr, timeStr) {
   // Only check for today's date
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getLocalDateStr();
   if (dateStr !== today) return false;
   try {
     const parsed = new Date(`${dateStr} ${timeStr}`);
@@ -732,7 +734,7 @@ function getTheaterUrl(theater) {
 // ===================== COMING SOON =====================
 
 function renderComingSoon(container, allFiltered) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getLocalDateStr();
   const nowEnd = getNowPlayingEnd();
 
   // Titles appearing in the Now Playing window are excluded from Coming Soon
