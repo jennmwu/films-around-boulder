@@ -45,10 +45,13 @@ def scrape():
     """Return a list of showtime dicts for SIE FilmCenter."""
     print(f"[SIE] Fetching events from Eventive REST API...")
 
+    # Request only upcoming events to avoid downloading the full archive
+    start_param = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     try:
         resp = requests.get(
             f"{API_BASE}/event_buckets/{BUCKET_ID}/events",
             headers=HEADERS,
+            params={"start_time": start_param},
             timeout=30,
         )
         resp.raise_for_status()
@@ -57,7 +60,22 @@ def scrape():
         print(f"[SIE] Error fetching events: {e}")
         return []
 
-    print(f"[SIE] Found {len(events)} total events in archive")
+    # If the filter returned nothing (API may not support it), fall back to full fetch
+    if len(events) == 0:
+        print(f"[SIE] start_time filter returned 0 events, falling back to full archive fetch")
+        try:
+            resp = requests.get(
+                f"{API_BASE}/event_buckets/{BUCKET_ID}/events",
+                headers=HEADERS,
+                timeout=60,
+            )
+            resp.raise_for_status()
+            events = resp.json().get("events", [])
+        except Exception as e:
+            print(f"[SIE] Error on fallback fetch: {e}")
+            return []
+
+    print(f"[SIE] Found {len(events)} events to process")
 
     today_utc = datetime.now(timezone.utc)
     results = []

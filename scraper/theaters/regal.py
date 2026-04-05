@@ -40,13 +40,13 @@ async def _scrape_async():
 
         # First load the theater page to get past Cloudflare
         try:
-            await page.goto(THEATER_PAGE, wait_until="networkidle", timeout=30000)
-            await page.wait_for_timeout(2000)
+            await page.goto(THEATER_PAGE, wait_until="domcontentloaded", timeout=20000)
+            await page.wait_for_timeout(500)
         except Exception as e:
             print(f"[Regal] Initial page load error (continuing): {e}")
 
         # Now hit the API for each date
-        for offset in range(14):
+        for offset in range(10):
             show_date = today + timedelta(days=offset)
             date_str = show_date.strftime("%m-%d-%Y")
 
@@ -68,7 +68,7 @@ async def _scrape_async():
                 print(f"[Regal] Error fetching {show_date}: {e}")
 
             if offset > 0:
-                await page.wait_for_timeout(500)
+                await page.wait_for_timeout(150)
 
         await browser.close()
 

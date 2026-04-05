@@ -6,6 +6,8 @@ Runs all theater scrapers, combines results, and writes docs/movies.json.
 import json
 import os
 import sys
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 
 # Add scraper dir to path
@@ -34,19 +36,32 @@ OUTPUT_PATH = os.path.join(
 )
 
 
+def _run_one(name, scrape_fn):
+    """Run a single scraper and return (name, results, elapsed)."""
+    t0 = time.time()
+    try:
+        results = scrape_fn()
+        elapsed = time.time() - t0
+        print(f"[{name}] {len(results)} showings in {elapsed:.1f}s")
+        return results
+    except Exception as e:
+        elapsed = time.time() - t0
+        print(f"[{name}] ERROR after {elapsed:.1f}s: {e}")
+        return []
+
+
 def run():
+    t_start = time.time()
     all_movies = []
 
-    for name, scrape_fn in SCRAPERS:
-        try:
-            print(f"\n{'='*50}")
-            print(f"Running {name} scraper...")
-            print(f"{'='*50}")
-            results = scrape_fn()
+    print(f"Running {len(SCRAPERS)} scrapers in parallel...")
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(_run_one, name, fn): name for name, fn in SCRAPERS}
+        for future in as_completed(futures):
+            results = future.result()
             all_movies.extend(results)
-            print(f"{name}: {len(results)} showings")
-        except Exception as e:
-            print(f"ERROR in {name} scraper: {e}")
+
+    print(f"\nAll scrapers done in {time.time() - t_start:.1f}s ({len(all_movies)} total showings)")
 
     # Filter to today through 45 days out
     # IFS and SIE publish full semester schedules far in advance;
@@ -219,14 +234,21 @@ def _categorize_movies(movies):
 
 def _normalize_title(title):
     """Clean up movie titles for consistency across theaters."""
-    # Strip leading/trailing whitespace
-    title = title.strip()
+    import re
 
-    # Title case normalization (but preserve intentional ALL CAPS like "WALL-E")
-    # For now, just strip extra whitespace
+    title = title.strip()
     title = " ".join(title.split())
 
-    return title
+    # Strip "X presents: Film Title" → "Film Title"
+    # Catches: "Cinema Youth Advisory Board presents: ..."
+    #          "The North Face Presents: ..."
+    title = re.sub(r'^.+?\bpresents:\s+', '', title, flags=re.IGNORECASE)
+
+    # Strip trailing qualifiers added by theaters
+    # e.g. "Over Your Dead Body - Early Access", "Faces Of Death - Early Access"
+    title = re.sub(r'\s*[-–]\s*(Early Access|Sneak Peek|Members Only Screening|Fan Event|Special Screening|Advance Screening)$', '', title, flags=re.IGNORECASE)
+
+    return title.strip()
 
 
 if __name__ == "__main__":
